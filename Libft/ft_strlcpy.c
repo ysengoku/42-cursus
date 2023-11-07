@@ -6,11 +6,11 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/07 16:48:32 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:49:39 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void    ft_strlcpy(char *dst, const char *src)
 {
-    int    size;
+    unsigned int    size;
 }
