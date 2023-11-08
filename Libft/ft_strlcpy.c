@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 09:39:02 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:41:53 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@ size_t    ft_strlcpy(char *dst, const char *src, size_t size)
         dst[i] = src[i];
         i++;
     }
-    dst[i] = '\0';
-    return (sizeof(src));
+    return (i);
 }
+
+/*
+#include <stdio.h>
+#include <string.h>
+#include <bsd/string.h>
+
+int	main()
+{
+	const char	src[] = "Hello World!";
+    char 	dest[20];
+	size_t	size = 12;
+
+	printf("My version: ");
+	printf("%zu\n", ft_strlcpy(dest, src, size));
+	printf("Original version: ");
+	printf("%zu\n", strlcpy(dest, src, size));
+	return (0);
+
+}
+*/
