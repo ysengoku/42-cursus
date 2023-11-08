@@ -17,11 +17,12 @@ size_t  ft_strlcpy(char *dst, const char *src, size_t size)
     size_t    i;
 
     i = 0;
-    while(i < sizeof(src) || i < size)
+    while(src[i] != '\0' && i < size - 1)
     {
         dst[i] = src[i];
         i++;
     }
+    dst[i] = '\0';
     return (i);
 }
 
@@ -34,12 +35,14 @@ int	main()
 {
 	const char	src[] = "Hello World!";
     char 	dest[20];
-	size_t	size = 12;
+	size_t	size = 15;
 
 	printf("My version: ");
 	printf("%zu\n", ft_strlcpy(dest, src, size));
+    
 	printf("Original version: ");
 	printf("%zu\n", strlcpy(dest, src, size));
+
 	return (0);
 
 }
