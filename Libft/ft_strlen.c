@@ -6,18 +6,18 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:51:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 13:36:39 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:36:46 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t int  ft_strlen(char *s)
+size_t  ft_strlen(char *s)
 {
-    int i;
+    size_t i;
     
     i = 0;
-    while(s[i] != '\0')
+    while(!s[i])
         i++;
     return (i);
 }
