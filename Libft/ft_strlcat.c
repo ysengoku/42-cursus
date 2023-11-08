@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:39:23 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 14:20:01 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:35:56 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ size_t  ft_strlcat(char *dst, const char *src, size_t size)
     unsigned int    i;
 
     dst_len = ft_strlen(dst);
-    src_len = 0;
-    while (src[src_len])
-        src_len++;
+    src_len = ft_strlen((char*)src);
     if (dst_len >= size)
         return (size + src_len);
     i = 0;

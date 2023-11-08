@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:23:54 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 10:43:14 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:52:00 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,13 @@ int ft_isprint(int c);
 
 
 
+size_t  ft_strlcat(char *dst, const char *src, size_t size);
+size_t  ft_strlcpy(char *dst, const char *src, size_t size);
+size_t  ft_strlen(char *s);
+int ft_strncmp(const char *s1, const char *s2, size_t n);
 
-size_t    ft_strlcpy(char *dst, const char *src, size_t size);
-unsigned int  ft_strlen(char *s);
+
+
+
 
 #endif

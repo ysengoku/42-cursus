@@ -6,15 +6,15 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 10:41:53 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:51:35 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t    ft_strlcpy(char *dst, const char *src, size_t size)
+size_t  ft_strlcpy(char *dst, const char *src, size_t size)
 {
-    unsigned int    i;
+    size_t    i;
 
     i = 0;
     while(i < sizeof(src) || i < size)
