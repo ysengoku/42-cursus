@@ -6,13 +6,13 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:51:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 10:36:08 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:36:39 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int  ft_strlen(char *s)
+size_t int  ft_strlen(char *s)
 {
     int i;
     
