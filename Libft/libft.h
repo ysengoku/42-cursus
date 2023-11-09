@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:23:54 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/09 11:37:13 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:31:05 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 
 
