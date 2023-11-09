@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:23:54 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 14:52:00 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:37:51 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef unsigned long    size_t;
 
-
+int ft_atoi(const char *nptr);
 
 
 int ft__isalnum(int c);
