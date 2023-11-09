@@ -16,7 +16,7 @@
 typedef unsigned long	size_t;
 
 int		ft_atoi(const char *nptr);
-
+void	ft_bzero(void *s, size_t n);
 
 int		ft__isalnum(int c);
 int		ft_isalpha(int c);
@@ -27,7 +27,7 @@ int		ft_isprint(int c);
 
 
 
-
+void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);

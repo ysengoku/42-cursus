@@ -14,34 +14,44 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned int	i;
+	void	*ptr;
+	size_t	i;
 
+	ptr = s;
 	i = 0;
-	while (i < n / sizeof(s[0]))
+	while (i < n)
 	{
-		s[i] == c;
+		((unsigned char *)s)[i] = (unsigned char)c;
 		i++;
 	}
-	return (s);
+	return (ptr);
 }
 /*
 s --> starting address of memory to be filled
 c --> value to be filled
 n --> number of bytes to be filled starting from "s"
 */
-
+/*
 #include <string.h>
 #include <stdio.h>
 
 int	main()
 {
-        char    s[] = "Coucou c'est moi.";
-        int     c = 'k';
-        size_t  n = 5*sizeof(char);
+    char    s1[] = "Coucou c'est moi.";
+	char	s2[] = "Coucou c'est moi.";
+    int     c = '8';
+    size_t  n = 5;
 
-        printf("Before: %s\n", s);
-        memset(s, c, n);
-        printf("After: %s\n", s);
-        return (0);
+	printf("--- Origial version ---\n");
+    printf("Before: %s\n", s1);
+    memset(s1, c, n);
+    printf("After: %s\n", s1);
+	
+	printf("--- My version ---\n");	
+    printf("Before: %s\n", s2);
+    ft_memset(s2, c, n);
+    printf("After: %s\n", s2);
 
+    return (0);
 }
+*/
