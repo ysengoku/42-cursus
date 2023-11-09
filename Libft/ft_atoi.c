@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:26:41 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/08 16:13:45 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:17:50 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,32 @@ int ft_atoi(const char *nptr)
     while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
         i++;
     if (nptr[i] == '-')
-    {
         sign = -1;
+    if (nptr[i] == '+' || nptr[i] == '-')
         i++;
-    }
-    else if (nptr[i] == '+')
-        i++;
-    while (ft_isdigit([i]))
+    while (ft_isdigit(nptr[i]))
     {
-        res += (nptr[i] - '0')
+        res += (nptr[i] - '0');
         if (ft_isdigit(nptr[i + 1]))
             res *= 10;
         i++;
     }
     return (res * sign);
+}   
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, const char *argv[])
+{
+    if (argc != 2)
+        return (0);
+    printf("--- My version ---\n");
+    printf("Input: %s ---> Output: %i\n", argv[1], ft_atoi(argv[1]));
+    
+    printf("--- Original atoi ---\n");
+    printf("Input: %s ---> Output: %i\n", argv[1], atoi(argv[1]));
+    
+    return (0);
 }
+*/
