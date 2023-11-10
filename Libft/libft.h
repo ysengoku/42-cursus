@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:23:54 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 14:19:55 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:46:26 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
-
+void	*ft_calloc(size_t nmemb, size_t size);
 int		ft__isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
