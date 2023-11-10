@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 13:20:20 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 15:10:00 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/10 15:18:35 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/10 15:24:07 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-nmemb --> number of blocks to be allocated
-size --> size of each block in bytes
-*/
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned char	*ptr;
-	size_t			i;
-
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
-		return (NULL);
-	i = 0;
-	while (i < nmemb)
+	while (*s)
 	{
-		ptr[i] = 0;
-		i++;
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
-	return (ptr);
+	ft_putchar('\n', fd);
 }

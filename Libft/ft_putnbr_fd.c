@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 13:20:20 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 15:10:00 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/10 15:24:25 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/10 15:46:16 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-nmemb --> number of blocks to be allocated
-size --> size of each block in bytes
-*/
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned char	*ptr;
-	size_t			i;
-
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
-		return (NULL);
-	i = 0;
-	while (i < nmemb)
+	if (n == -2147483648)
 	{
-		ptr[i] = 0;
-		i++;
+		ft_putstr_fd('-2147483648', fd);
+		return ;
 	}
-	return (ptr);
+	if (n >= 0 && n <= 9)
+		ft_putchar_fd(n + '0', fd);
+	else if (n < 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(n * (-1));
+	}
 }
