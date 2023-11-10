@@ -19,5 +19,5 @@ void	ft_putendl_fd(char *s, int fd)
 		ft_putchar_fd(*s, fd);
 		s++;
 	}
-	ft_putchar('\n', fd);
+	ft_putchar_fd('\n', fd);
 }
