@@ -1,19 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/10 08:50:45 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/10 13:07:34 by yusengok         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	void	*dst_ptr;
+	char	*dest_ptr;
+	char	*src_ptr;
 	size_t	i;
-
-	dst_ptr = dst;
+	
+	if (!dest && !src)
+		return (dest);
+	dest_ptr = (char *)dest;
+	src_ptr = (char *)src;
 	i = 0;
-	if (!dst || !src)
-		return (dst);
 	while (i < n)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		dest_ptr[i] = src_ptr[i];
 		i++;
 	}
-	return (dst_ptr);
+	return (dest);
+}
+
+#include <string.h>
+
+int	main()
+{
+	char	s1[] = "Hello World";
+	char	s2[] = "Hello World";
+	const char	src[] = "Coucou World";
+	size_t	n = sizeof(src);
+
+	printf("--- Original version ---\n");
+	printf("s1: %s\nsrc: %s\n", s1, src);
+	memcpy(s1, src, n);
+	printf("s1 after memcpy: %s\n", s1);
+
+	printf("--- My version ---\n");
+	printf("s2: %s\nsrc: %s\n", s2, src);
+	ft_memcpy(s2, src, n);
+	printf("s2 after ft_memcpy: %s\n", s2);
+
+	return 0;
 }
