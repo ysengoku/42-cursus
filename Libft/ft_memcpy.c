@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:50:45 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 13:07:34 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:16:58 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
+/*
 #include <string.h>
 
 int	main()
@@ -52,3 +52,4 @@ int	main()
 
 	return 0;
 }
+*/
