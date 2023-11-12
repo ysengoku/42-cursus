@@ -29,7 +29,6 @@ char	*ft_strdup(const char *s)
 	}
 	copy[i] = '\0';
 	return (copy);
-	free(copy);
 }
 /*
 #include <stdio.h>

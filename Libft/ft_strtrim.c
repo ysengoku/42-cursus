@@ -10,3 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	unsigned int	start;
+	unsigned int	end;
+	char	*s2;
+	
+	if (ft_strlen((char *)s1) == 0)
+		return (ft_strdup(s1));
+	start = 0;
+	end = ft_strlen((char *)s1) - 1;
+	/*
+	Get the starting position to copy
+	*/
+	while (ft_strchr(set, s1[start]) != 0 && s1[start])
+		start++;
+	/*
+	Get the end position to copy
+	*/
+	while (ft_strchr(set, s1[end]) != 0 && end > start)
+		end--;
+	s2 = (char *)malloc((end - start + 1) * sizeof(char) + 1);
+	if (s2 == NULL)
+		return (NULL);
+	ft_strlcpy(s2, s1 + start, end - start + 2);
+	return (s2);
+}
+/*
+int	main(int argc, char **argv)
+{
+	if (argc != 3)
+		return 0;
+	printf("%s\n", ft_strtrim(argv[1], argv[2]));
+}
+*/
