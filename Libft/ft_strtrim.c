@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:49:37 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 15:49:38 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:44:49 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned int	start;
 	unsigned int	end;
-	char	*s2;
-	
+	char			*s2;
+
 	if (ft_strlen((char *)s1) == 0)
 		return (ft_strdup(s1));
 	start = 0;
-	end = ft_strlen((char *)s1) - 1;
-	/*
-	Get the starting position to copy
-	*/
 	while (ft_strchr(set, s1[start]) != 0 && s1[start])
 		start++;
-	/*
-	Get the end position to copy
-	*/
+	end = ft_strlen((char *)s1) - 1;
 	while (ft_strchr(set, s1[end]) != 0 && end > start)
 		end--;
 	s2 = (char *)malloc((end - start + 1) * sizeof(char) + 1);
