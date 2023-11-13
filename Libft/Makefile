@@ -1,24 +1,31 @@
-TARGET = libft.a
-SRCS = 
-OBJS = $(addprefix $(SRCS:.c=.o))
-INCLUDES = libft.h
+NAME = libft.a
+
+FILES = 
+
+SRCS_DIR = ./
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c $(FILES)))
+
+OBJS_DIR = ./
+OBJS = $(addprefix $(SRCS_DIR), $(addsuffix .o $(FILES)))
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+RM	= rm -f
 
-.c.o:
+.c.o: $(SRCS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
-$(TARGET): $(OBJS)
-	ar rc $(TARGET) $(OBJS)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-all: $(TARGET)
+all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(TARGET)
+	$(RM) $(NAME)
 
-re: fclean all
+re: clean all
 
 .PHONY: all clean fclean re
