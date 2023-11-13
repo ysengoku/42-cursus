@@ -13,6 +13,7 @@
 #include "libft.h"
 
 static int	get_digits_count(int n);
+static char	*ft_strcpy(char *dst, char const *src);
 
 char	*ft_itoa(int n)
 {
@@ -20,24 +21,22 @@ char	*ft_itoa(int n)
 	int		count;
 
 	count = get_digits_count(n);
-	str = (char *)malloc((count + 1) * sizeof(char));
-	if (!str)
+	if (!(str = (char *)malloc((count + 1) * sizeof(char))))
 		return (NULL);
 	if (n == -2147483648)
-		str = "-2147483648";
-	else
+		return (ft_strcpy(str, "-2147483648"));
+	str[count] = '\0';
+	if (n < 0)
 	{
-		str[count] = '\0';
-		if (n < 0)
-		{
-			n *= -1;
-			str[0] = '-';
-		}
-		while (n > 0)
-		{
-			str[--count] = n % 10 + '0';
-			n /= 10;
-		}
+		n *= -1;
+		str[0] = '-';
+	}
+	if (n == 0)
+		str[--count] = '0';
+	while (n > 0)
+	{
+		str[--count] = n % 10 + '0';
+		n /= 10;
 	}
 	return (str);
 }
@@ -65,6 +64,20 @@ static int	get_digits_count(int n)
 		}
 	}
 	return (count);
+}
+
+static char	*ft_strcpy(char *dst, char const *src)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);	
 }
 
 int	main(int argc, char **argv)
