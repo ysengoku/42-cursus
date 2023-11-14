@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:58:06 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/14 16:02:17 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:10:13 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 #include <stdio.h>
 #include <bsd/string.h>
 
+int	main()
+{
+	char haystack[30] = "aaabcabcd";
+	printf("--- Original version ---\n");
+	printf("%s\n", strnstr(haystack, "cd", 8));
+	// -----> null
+		 
+//	printf("--- My version ---\n");
+//	printf("Output %s\n", ft_strnstr(haystack, "cd", 8));
+	
+	return 0;
+}
+/*
 int	main(int argc, char *argv[])
 {
 	if (argc != 4)
@@ -54,8 +67,4 @@ int	main(int argc, char *argv[])
 	
 	return 0;
 }
-
-/*
-char haystack[30] = "aaabcabcd";
-ft_strnstr(haystack, "cd", 8)
 */
