@@ -14,14 +14,16 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	tmp;
+	size_t	i;
+	size_t	j;
+	size_t	tmp;
+	size_t	little_len;
 
 	i = 0;
-	if (!little[i])
+	little_len = ft_strlen((char *)little);
+	if (!little[0])
 		return ((char *)big);
-	while (big[i] && i < len)
+	while (big[i] && i + little_len <= len)
 	{
 		j = 0;
 		tmp = i;
@@ -34,25 +36,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
-
+/*
 #include <stdio.h>
 #include <bsd/string.h>
 
-int	main()
-{
-	char haystack[30] = "aaabcabcd";
-	printf("--- Original version ---\n");
-	printf("%s\n", strnstr(haystack, "cd", 8));
-	// -----> null
-		 
-//	printf("--- My version ---\n");
-//	printf("Output %s\n", ft_strnstr(haystack, "cd", 8));
-	
-	return 0;
-}
-/*
 int	main(int argc, char *argv[])
 {
 	if (argc != 4)
