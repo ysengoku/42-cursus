@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:49:45 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 15:49:46 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:15:02 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	len = ft_strlen(s);
-	if (!(res = (char *)malloc((len + 1) * sizeof(char))))
+	res = (char *)malloc((len + 1) * sizeof(char)));
+	if (!res)
 		return (NULL);
 	i = 0;
 	while (i < len)
