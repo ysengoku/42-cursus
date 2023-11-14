@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:58:06 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/09 13:30:35 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:02:17 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
-/*
+
 #include <stdio.h>
 #include <bsd/string.h>
 
@@ -54,4 +54,8 @@ int	main(int argc, char *argv[])
 	
 	return 0;
 }
+
+/*
+char haystack[30] = "aaabcabcd";
+ft_strnstr(haystack, "cd", 8)
 */
