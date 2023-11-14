@@ -3,7 +3,7 @@ NAME = libft.a
 SRCS = ft_atoi.c \
 	ft_bzero.c \
 	ft_calloc.c \
-	ft__isalnum.c \
+	ft_isalnum.c \
 	ft_isalpha.c \
 	ft_isascii.c \
 	ft_isdigit.c \
@@ -35,19 +35,19 @@ SRCS = ft_atoi.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
 
-OBJS = $(SRCS: .c=.o)
+OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM	= rm -f
 
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I
+all: $(NAME) clean
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-all: $(NAME)
+.c.o: 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
@@ -55,6 +55,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: clean $(NAME)
 
 .PHONY: all clean fclean re
