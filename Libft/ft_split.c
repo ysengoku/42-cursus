@@ -6,15 +6,15 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:03 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/13 12:42:32 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:56:17 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_wordcount(char const *s, char c);
-static char	*copy_word(char const *src, char c, int start);
-static void	free_all(char **str, int i);
+static int	ft_get_wordcount(char const *s, char c);
+static char	*ft_copy_word(char const *src, char c, int start);
+static void	ft_freeall(char **str, int i);
 
 char	**ft_split(char const *s, char c)
 {
@@ -23,7 +23,7 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		nextword_start;
 
-	wordcount = get_wordcount(s, c);
+	wordcount = ft_get_wordcount(s, c);
 	new_str = (char **)malloc((wordcount + 1) * sizeof(char *));
 	if (!new_str)
 		return (NULL);
@@ -31,10 +31,10 @@ char	**ft_split(char const *s, char c)
 	nextword_start = 0;
 	while (i < wordcount)
 	{
-		new_str[i++] = copy_word(s, c, nextword_start);
+		new_str[i++] = ft_copy_word(s, c, nextword_start);
 		if (!new_str[i - 1])
 		{
-			free_all(new_str, i);
+			ft_freeall(new_str, i);
 			return (NULL);
 		}
 		nextword_start += 1;
@@ -45,7 +45,7 @@ char	**ft_split(char const *s, char c)
 	return (new_str);
 }
 
-static int	get_wordcount(char const *s, char c)
+static int	ft_get_wordcount(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -63,7 +63,7 @@ static int	get_wordcount(char const *s, char c)
 	return (count);
 }
 
-static char	*copy_word(char const *src, char c, int start)
+static char	*ft_copy_word(char const *src, char c, int start)
 {
 	int		i;
 	int		end;
@@ -84,7 +84,7 @@ static char	*copy_word(char const *src, char c, int start)
 	return (copy);
 }
 
-static void	free_all(char **str, int i)
+static void	ft_freeall(char **str, int i)
 {
 	while (i > 0)
 		free(str[i--]);
