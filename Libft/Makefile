@@ -42,7 +42,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM	= rm -f
 
 .c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
+	$(CC) $(CFLAGS) -c $< -o $@ -I
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
