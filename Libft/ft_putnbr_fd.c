@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:24:25 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 15:46:16 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:26:27 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{
-		ft_putstr_fd('-2147483648', fd);
+		ft_putstr_fd("-2147483648", fd);
 		return ;
 	}
 	if (n >= 0 && n <= 9)
@@ -29,6 +29,6 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 	{
 		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(n * (-1));
+		ft_putnbr_fd(n * (-1), fd);
 	}
 }
