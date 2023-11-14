@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:50:45 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 13:16:58 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:08:26 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*dest_ptr;
 	char	*src_ptr;
 	size_t	i;
-	
+
 	if (!dest && !src)
 		return (dest);
 	dest_ptr = (char *)dest;

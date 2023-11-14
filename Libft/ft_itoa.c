@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:19 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/13 14:48:10 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:14:53 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_itoa(int n)
 
 	nbr = n;
 	count = get_digits_count(nbr);
-	if (!(str = (char *)malloc((count + 1) * sizeof(char))))
+	str = (char *)malloc((count + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
 	str[count] = '\0';
 	if (nbr < 0)

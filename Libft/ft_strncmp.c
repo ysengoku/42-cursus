@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:41:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/09 11:34:07 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:11:28 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int main(int argc, char *argv[])
 {
     if (argc != 4)
         return (0);
-    printf("My version\n s1 === %s s2 === %s ---> %u\n", argv[1], argv[2], ft_strncmp(argv[1], argv[2], atoi(argv[3])));
-    printf("Original version\n s1 === %s s2 === %s ---> %u\n", argv[1], argv[2], strncmp(argv[1], argv[2], atoi(argv[3])));
+    printf("My version\n s1 === %s s2 === %s ---> %u\n", \
+	argv[1], argv[2], ft_strncmp(argv[1], argv[2], atoi(argv[3])));
+    printf("Original version\n s1 === %s s2 === %s ---> \
+	%u\n", argv[1], argv[2], strncmp(argv[1], argv[2], atoi(argv[3])));
     return (0);
 }
 */

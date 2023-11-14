@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:49:53 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 16:04:28 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:13:52 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*res;
+	char			*res;
 	unsigned int	res_len;
 	unsigned int	i;
 	unsigned int	j;

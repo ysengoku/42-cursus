@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:49:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 15:58:28 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:13:20 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	i;
-	
+
 	substr = (char *)malloc(len * sizeof(char));
 	if (!substr)
 		return (NULL);
