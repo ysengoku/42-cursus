@@ -14,16 +14,17 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	size_t	src_len;
 
-	i = 0;
-	while (src[i] != '\0' && i < size - 1)
+	src_len = ft_strlen((char *)src);
+	if (src_len + 1 < size)
+		ft_memcpy(dst, src, src_len + 1);
+	else if (size != 0)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_memcpy(dst, src, size - 1);
+		dst[size - 1] = '\0';
 	}
-	dst[i] = '\0';
-	return (i);
+	return (src_len);
 }
 /*
 #include <stdio.h>
@@ -38,11 +39,10 @@ int	main()
 
 	printf("My version: ");
 	printf("%zu\n", ft_strlcpy(dest, src, size));
-    
+  
 	printf("Original version: ");
 	printf("%zu\n", strlcpy(dest, src, size));
 
 	return (0);
-
 }
 */
