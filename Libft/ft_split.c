@@ -18,35 +18,33 @@ static void	ft_freeall(char **str, int i);
 
 char	**ft_split(char const *s, char c)
 {
-	char	**new_str;
+	char	**array;
 	int		wordcount;
 	int		i;
-	int		nextword_start;
+	int		word_start;
 
 	wordcount = ft_get_wordcount(s, c);
-	new_str = (char **)malloc((wordcount + 1) * sizeof(char *));
-//	if (!new_str)
-//		return (NULL);
+	array = (char **)malloc((wordcount + 1) * sizeof(char *));
+	if (!array)
+		return (NULL);
 	i = 0;
-	nextword_start = 0;
-	while (s[nextword_start] == c)
-          nextword_start++;
+	word_start = 0;
 	while (i < wordcount)
 	{
-		new_str[i++] = ft_copy_word(s, c, nextword_start);
-		if (!new_str[i - 1])
+		while (s[word_start] == c)
+          word_start++;
+		array[i++] = ft_copy_word(s, c, word_start);
+		if (!array[i - 1])
 		{
-			ft_freeall(new_str, i);
+			ft_freeall(array, i);
 			return (NULL);
 		}
-		nextword_start += 1;
-		while (s[nextword_start - 1] != c && s[nextword_start])
-			nextword_start++;
-		while (s[nextword_start] == c)
-			nextword_start++;
+		word_start += 1;
+		while (s[word_start - 1] != c && s[word_start])
+			word_start++;
 	}
-	new_str[i] = NULL;
-	return (new_str);
+	array[i] = NULL;
+	return (array);
 }
 
 static int	ft_get_wordcount(char const *s, char c)
@@ -75,24 +73,22 @@ static int	ft_get_wordcount(char const *s, char c)
 static char	*ft_copy_word(char const *src, char c, int start)
 {
 	int		i;
-	int		end;
-	char	*copy;
+	int		len;
+	char	*word;
 	
-	i = 0;
-//	while (src[start] == c)
-//		start++;
-	end = start;
-	while (src[end] != c && src[end])
-		end++;
-	copy = (char *)malloc((end - start + 1) * sizeof(char));
-	if (!copy)
+	len = 0;
+	while (src[start + len] != c && src[start + len])
+		len++;
+	word = (char *)malloc((len + 1) * sizeof(char));
+	if (!word)
 		return (NULL);
-	while (start < end)
+	i = 0;
+	while (i < len)
 	{
-		copy[i++] = src[start++];
+		word[i++] = src[start++];
 	}
-	copy[i] = '\0';
-	return (copy);
+	word[i] = '\0';
+	return (word);
 }
 
 static void	ft_freeall(char **str, int i)
