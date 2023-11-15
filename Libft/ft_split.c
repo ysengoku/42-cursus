@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:03 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/14 12:56:17 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:06:32 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	nextword_start = 0;
+	while (s[nextword_start] == c)
+          nextword_start++;
 	while (i < wordcount)
 	{
 		new_str[i++] = ft_copy_word(s, c, nextword_start);
@@ -39,6 +41,8 @@ char	**ft_split(char const *s, char c)
 		}
 		nextword_start += 1;
 		while (s[nextword_start - 1] != c && s[nextword_start])
+			nextword_start++;
+		while (s[nextword_start] == c)
 			nextword_start++;
 	}
 	new_str[i] = NULL;
@@ -51,13 +55,18 @@ static int	ft_get_wordcount(char const *s, char c)
 	int	count;
 
 	i = 0;
+	while (s[i] == c)
+		i++;
 	if (!s[i])
 		return (0);
 	count = 1;
 	while (s[i])
 	{
 		if (s[i] == c)
-			count++;
+		{
+			if (s[i + 1] != c && s[i + 1])
+				count++;
+		}
 		i++;
 	}
 	return (count);
@@ -90,19 +99,18 @@ static void	ft_freeall(char **str, int i)
 		free(str[i--]);
 	free(str);
 }
-/*
-int	main(int argc, char **argv)
-{
-	int		i = 0;
-	char	**array;
-	
-	if (argc != 3)
-		return 0;
-	array = ft_split(argv[1], argv[2][0]);
-	while (array[i])
+
+	int	main(int argc, char **argv)
 	{
-		printf("%s\n", array[i++]);
+		int		i = 0;
+		char	**array;
+		
+		if (argc != 3)
+			return 0;
+		array = ft_split(argv[1], argv[2][0]);
+		while (array[i])
+		{
+			printf("%s\n", array[i++]);
+		}
+		return 0;
 	}
-	return 0;
-}
-*/
