@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:23:54 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/16 09:45:47 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:20:55 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
+# include <limits.h>
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);

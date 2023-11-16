@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:20:20 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/15 09:25:27 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:22:16 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	unsigned char	*ptr;
 	size_t			i;
 
-	if (nmemb == 0 || size == 0)
+	if (nmemb * size > INT_MAX || ((int)nmemb < 0 && (int)size <0))
 		return (NULL);
 	ptr = malloc(nmemb * size);
 	if (!ptr)
