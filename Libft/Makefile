@@ -35,22 +35,31 @@ SRCS = ft_atoi.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
 
+SRCS_BONUS = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c
+
 OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:%.c=%_bonus.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
 RM	= rm -f
 
 all: $(NAME) clean
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
+
+bonus: $(OBJS_BONUS) $(OBJS)
+	$(AR) $(NAME) $(OBJS_BONUS) $(OBJS)
 
 .c.o: 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)
