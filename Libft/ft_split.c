@@ -6,14 +6,13 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:03 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/17 10:15:12 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/17 11:02:10 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static size_t	ft_get_wordcount(char const *s, char c);
-//static size_t	ft_get_wordlen(char const *s, size_t start, char c);
 static void		ft_freeall(char **str, size_t i);
 static char		**ft_cpy_words(char const *s, char c, size_t count, char **arr);
 
@@ -52,23 +51,8 @@ static size_t	ft_get_wordcount(char const *s, char c)
 		}
 		i++;
 	}
-//	printf("%zu\n", count);
 	return (count);
 }
-
-// static size_t	ft_get_wordlen(char const *s, size_t start, char c)
-// {
-// 	size_t	len;
-
-// 	len = 0;
-// 	while (s[start] && s[start] != c)
-// 	{
-// 		start++;
-// 		len++;
-// 	}
-// //	printf("%zu\n", len);
-// 	return (len);
-// }
 
 static void	ft_freeall(char **str, size_t i)
 {
