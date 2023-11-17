@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:23:54 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/16 11:20:55 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/17 08:34:18 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 # include <stdint.h>
 # include <limits.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
-	struct s_list	*next; 
+	struct s_list	*next;
 }					t_list;
 
 int		ft_atoi(const char *nptr);
