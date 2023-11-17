@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:38:38 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/16 14:21:01 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:01:17 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@ char	*ft_strchr(const char *s, int c)
 	unsigned int	i;
 
 	i = 0;
-	if (c == '\0')
-		return ((char *)&s[ft_strlen((char *)s)]);
 	while (s[i])
 	{
 		if (s[i] == (char)c)
 			return ((char *)&s[i]);
-		else
-			i++;
+		i++;
 	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
 	return (NULL);
 }
 /*
