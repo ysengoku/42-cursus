@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 10:32:24 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/17 14:30:54 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:28:43 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
-
+	
 	tmp = *lst;
 	while (tmp)
 		tmp = tmp->next;
