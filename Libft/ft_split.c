@@ -6,14 +6,14 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:03 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/16 14:32:49 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:15:12 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static size_t	ft_get_wordcount(char const *s, char c);
-static size_t	ft_get_wordlen(char const *s, size_t start, char c);
+//static size_t	ft_get_wordlen(char const *s, size_t start, char c);
 static void		ft_freeall(char **str, size_t i);
 static char		**ft_cpy_words(char const *s, char c, size_t count, char **arr);
 
@@ -38,7 +38,7 @@ static size_t	ft_get_wordcount(char const *s, char c)
 	size_t	count;
 
 	i = 0;
-	while (s[i] == c)
+	while (s[i] && s[i] == c)
 		i++;
 	if (!s[i])
 		return (0);
@@ -56,20 +56,19 @@ static size_t	ft_get_wordcount(char const *s, char c)
 	return (count);
 }
 
-static size_t	ft_get_wordlen(char const *s, size_t start, char c)
-{
-	size_t	len;
+// static size_t	ft_get_wordlen(char const *s, size_t start, char c)
+// {
+// 	size_t	len;
 
-	len = 0;
-	while (s[start] && s[start] != c)
-	{
-		start++;
-		len++;
-	}
-//	printf("%zu\n", len);
-// There is a problem wiith the last word length count...?
-	return (len);
-}
+// 	len = 0;
+// 	while (s[start] && s[start] != c)
+// 	{
+// 		start++;
+// 		len++;
+// 	}
+// //	printf("%zu\n", len);
+// 	return (len);
+// }
 
 static void	ft_freeall(char **str, size_t i)
 {
@@ -81,61 +80,43 @@ static void	ft_freeall(char **str, size_t i)
 static char	**ft_cpy_words(char const *s, char c, size_t count, char **arr)
 {
 	size_t	i;
+	size_t	j;
 	size_t	start;
-	size_t	len;
-	char	**array;
 
 	i = 0;
+	j = 0;
 	start = 0;
-	len = 0;
-	array = arr;
 	while (i < count)
 	{
-		while (s[start] == c)
-			start++;
-		len = ft_get_wordlen(s, start, c);
-		array[i++] = ft_substr(s, start, len);
-		if (!array[i - 1])
+		while (s[j] && s[j] == c)
+			j++;
+		start = j;
+		while (s[j] && s[j] != c)
+			j++;
+		arr[i] = ft_substr(s, start, j - start);
+		if (arr[i] == NULL)
 		{
-			ft_freeall(array, i);
+			ft_freeall(arr, i);
 			return (NULL);
 		}
-		start += len;
-		printf("%zu\n", start);
+		i++;
 	}
 	arr[i] = NULL;
-	return (array);
+	return (arr);
 }
-/*
+
 int    main()
 {
   char **array;
   int        i = 0;
 
-    array = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+    array = ft_split("hello!", ' ');
     while (array[i])
     {
         printf("%s\n", array[i++]);
     }
+	for (int i = 0; array[i]; i++)
+		free(array[i]);
+	free(array);
     return 0;
 }
-*/
-/*
-    array = ft_split("--1-2--3---4----5-----42", '-');
-*/
-/*
-int	main(int argc, char **argv)
-{
-	int		i = 0;
-	char	**array;
-
-	if (argc != 3)
-		return 0;
-	array = ft_split(argv[1], argv[2][0]);
-	while (array[i])
-	{
-		printf("%s\n", array[i++]);
-	}
-	return 0;
-}
-*/	
