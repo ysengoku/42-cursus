@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:03 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/16 09:49:07 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:32:49 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 	size_t	wordcount;
 
+	if (!s)
+		return (NULL);
 	wordcount = ft_get_wordcount(s, c);
 	arr = (char **)malloc((wordcount + 1) * sizeof(char *));
-	if (!arr || !s)
+	if (!arr)
 		return (NULL);
 	ft_cpy_words(s, c, wordcount, arr);
 	return (arr);
@@ -50,6 +52,7 @@ static size_t	ft_get_wordcount(char const *s, char c)
 		}
 		i++;
 	}
+//	printf("%zu\n", count);
 	return (count);
 }
 
@@ -58,11 +61,13 @@ static size_t	ft_get_wordlen(char const *s, size_t start, char c)
 	size_t	len;
 
 	len = 0;
-	while (s[start] != c)
+	while (s[start] && s[start] != c)
 	{
 		start++;
 		len++;
 	}
+//	printf("%zu\n", len);
+// There is a problem wiith the last word length count...?
 	return (len);
 }
 
@@ -96,24 +101,25 @@ static char	**ft_cpy_words(char const *s, char c, size_t count, char **arr)
 			return (NULL);
 		}
 		start += len;
+		printf("%zu\n", start);
 	}
 	arr[i] = NULL;
 	return (array);
 }
-
+/*
 int    main()
 {
   char **array;
   int        i = 0;
 
-    array = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i');
+    array = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
     while (array[i])
     {
         printf("%s\n", array[i++]);
     }
     return 0;
 }
-
+*/
 /*
     array = ft_split("--1-2--3---4----5-----42", '-');
 */
