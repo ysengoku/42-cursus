@@ -62,6 +62,7 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+HEAD = libft.h
 AR = ar rcs
 RM	= rm -f
 
@@ -73,7 +74,7 @@ $(NAME): $(OBJS)
 bonus: all $(OBJS_BONUS)
 	$(AR) $(NAME) $(OBJS_BONUS)
 
-%.o: %.c libft.h
+%.o: %.c $(HEAD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
