@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:26:41 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/09 10:38:02 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:12:40 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int		i;
+	int		sign;
+	long	res;
 
 	i = 0;
 	sign = 1;
@@ -34,7 +34,7 @@ int	ft_atoi(const char *nptr)
 			res *= 10;
 		i++;
 	}
-	return (res * sign);
+	return ((int)res * sign);
 }
 /*
 #include <stdio.h>
