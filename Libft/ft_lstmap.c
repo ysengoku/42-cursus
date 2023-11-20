@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 12:13:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/17 16:04:14 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/20 08:01:41 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f || !del)
 		return (NULL);
-	newlst = NULL; 
+	newlst = NULL;
 	while (lst)
 	{
 		newnode = ft_lstnew(f(lst->content));
