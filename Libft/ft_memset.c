@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:45:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 10:38:39 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:59:15 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@ n --> number of bytes to be filled starting from "s"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	void	*ptr;
 	size_t	i;
 
-	ptr = s;
 	i = 0;
 	while (i < n)
 	{
 		((unsigned char *)s)[i] = (unsigned char)c;
 		i++;
 	}
-	return (ptr);
+	return (s);
 }
 
 /*
