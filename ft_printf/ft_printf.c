@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+//static int	ft_print_arg();
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap; // argument pointer (pointer to the list of arguments to be printed)
@@ -26,18 +28,34 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] != '%')
-			count += (int)write(1, &format[i], 1); // Need to secure if write returns -1 (erreur)
+			count += (int)write(1, &format[i], 1); 
+			// Need to secure : if write returns -1 (erreur)
 		else if (format[i] == '%' && format[i + 1] == '%')
 			count += (int)write(1, '%', 1);
 //		else if (format[i] == '%' && format[i + 1] != '%')
-//			--> get type & print arg according to its type & increase count
+//			--- get type & print arg according to its type & increase count ---
+//			count += ft_print_arg(format, ap, i);
 		i++;
 	}
 	va_end(ap);
 	return (count);
 }
 
-static char	ft_print_arg(const char *str)
+static int	ft_print_arg(const char *str, va_lst ap, int i)
 {
-	
+	int	count;
+
+	count = 0;
+/*
+	if (str[i + 1] == c) 
+		count += write(1, &va_arg(ap, char), 1);
+
+	if s --> count += ft_print
+p
+d
+i
+u
+x
+X
+*/
 }
