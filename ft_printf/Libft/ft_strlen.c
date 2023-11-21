@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 08:34:29 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/21 08:57:49 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/07 15:51:28 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/17 12:34:33 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

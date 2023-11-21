@@ -1,16 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 08:34:29 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/21 08:57:49 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/10 15:49:45 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/14 13:20:11 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	
+	char			*res;
+	unsigned int	len;
+	unsigned int	i;
+
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen((char *)s);
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		res[i] = f(i, s[i]);
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

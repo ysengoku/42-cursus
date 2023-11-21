@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 08:34:29 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/21 08:57:49 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/17 08:32:47 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/20 13:02:59 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

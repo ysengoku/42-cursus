@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 08:34:29 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/21 08:57:49 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/10 15:06:21 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/14 09:16:03 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_printf(const char *format, ...)
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	
+	write(fd, &c, 1);
 }
