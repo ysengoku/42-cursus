@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:58:06 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/14 16:10:13 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:06:21 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-#include <bsd/string.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc != 4)
-		return 0;
-	printf("--- Original version ---\n");
-	printf("Big: %s\n Litte: %s\n Length: %s\n", argv[1], argv[2], argv[3]);
-	printf("Output %s\n", strnstr(argv[1], argv[2], ft_atoi(argv[3])));
-		 
-	printf("--- My version ---\n");
-	printf("Big: %s\n Litte: %s\n Length: %s\n", argv[1], argv[2], argv[3]);
-	printf("Output %s\n", ft_strnstr(argv[1], argv[2], ft_atoi(argv[3])));
-	
-	return 0;
-}
-*/

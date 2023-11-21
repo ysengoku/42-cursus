@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:19 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/14 13:16:11 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:03:23 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,3 @@ static int	ft_get_digits_count(long n)
 	}
 	return (count);
 }
-/*
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		return 0;
-	printf("%s\n", ft_itoa(atoi(argv[1])));
-	return 0;
-}
-*/

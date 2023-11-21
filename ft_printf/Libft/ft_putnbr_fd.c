@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:24:25 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/14 13:26:27 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:04:56 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,3 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(nbr + '0', fd);
 }
-/*
-int	main(int argc, char **argv)
-{
-	if (argc != 3)
-		return 0;
-	ft_putnbr_fd(atoi(argv[1]), atoi(argv[2]));
-	printf("%c", '\n');
-	return 0;
-}
-*/

@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 13:12:10 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/20 11:02:14 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/21 10:07:15 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,10 +86,3 @@ fclean: clean
 re: fclean $(NAME)
 
 .PHONY: all bonus clean fclean re
-
-# 変数を呼び出すときは$()で囲む
-# -c === compile option to compile the source file & create the object file
-# $< === name of the source file
-# -o === define the name of the output file
-# $@ === ターゲットファイル名
-# %.o %.c === %を使うことで、SRCSで指定された.cファイルを.oファイルにそれぞれ置換している
