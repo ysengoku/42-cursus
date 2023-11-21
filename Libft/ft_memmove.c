@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:24:26 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/10 13:16:00 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:04:40 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	dest_ptr = (char *)dest;
 	src_ptr = (const char *)src;
 	i = 0;
-	/*
-	* Check if the adress of dest is grater than the one of src.
-	* If true, memory overlapping may happen, 
-	* so we should copy from the end to avoid overwrite.
-	*/
 	if (dest_ptr > src_ptr)
 	{
 		while (n-- > 0)
@@ -43,6 +38,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+/*
+Line 27 : if (dest_ptr > src_ptr)
+* Check if the adress of dest is grater than the one of src.
+* If true, memory overlapping may happen, 
+* so we should copy from the end to avoid overwrite.
+*/
 /*
 #include <string.h>
 
