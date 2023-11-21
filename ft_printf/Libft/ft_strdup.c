@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 09:23:41 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/09 09:57:08 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:05:35 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,3 @@ char	*ft_strdup(const char *s)
 	copy[i] = '\0';
 	return (copy);
 }
-/*
-#include <stdio.h>
-
-int main(int argc, char *argv[])
-{
-    if (argc != 2)
-        return (0);
-    printf("Source: %s\n", argv[1]);
-    printf("Copy: %s\n", ft_strdup(argv[1]));
-    return (0);
-}
-*/

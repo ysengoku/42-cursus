@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:50:45 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/14 09:08:26 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:03:54 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-#include <string.h>
-
-int	main()
-{
-	char	s1[] = "Hello World";
-	char	s2[] = "Hello World";
-	const char	src[] = "Coucou World";
-	size_t	n = sizeof(src);
-
-	printf("--- Original version ---\n");
-	printf("s1: %s\nsrc: %s\n", s1, src);
-	memcpy(s1, src, n);
-	printf("s1 after memcpy: %s\n", s1);
-
-	printf("--- My version ---\n");
-	printf("s2: %s\nsrc: %s\n", s2, src);
-	ft_memcpy(s2, src, n);
-	printf("s2 after ft_memcpy: %s\n", s2);
-
-	return 0;
-}
-*/

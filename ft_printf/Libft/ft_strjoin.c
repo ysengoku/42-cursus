@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:49:53 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/14 09:13:52 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:05:42 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	res[j] = '\0';
 	return (res);
 }
-/*
-int	main(int argc, char **argv)
-{
-	if (argc != 3)
-		return 0;
-	printf("%s\n", ft_strjoin(argv[1], argv[2]));
-	return 0;
-}
-*/

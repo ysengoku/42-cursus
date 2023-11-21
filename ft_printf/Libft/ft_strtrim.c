@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:49:37 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/13 11:44:49 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:06:36 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(s2, s1 + start, end - start + 2);
 	return (s2);
 }
-/*
-int	main(int argc, char **argv)
-{
-	if (argc != 3)
-		return 0;
-	printf("%s\n", ft_strtrim(argv[1], argv[2]));
-}
-*/
