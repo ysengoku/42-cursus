@@ -12,12 +12,13 @@
 
 #include "ft_printf.h"
 
-//static int	ft_print_arg();
+static int	ft_print_arg(const char *str, va_lst ap, int i);
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap; // argument pointer (pointer to the list of arguments to be printed)
 	int	count;
+	int	n;
 	int	i;
 
 	if (!format)
@@ -28,10 +29,20 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] != '%')
-			count += (int)write(1, &format[i], 1); 
+		{
+			n = (int)write(1, &format[i], 1); 
 			// Need to secure : if write returns -1 (erreur)
+			//if (n < 0)
+			//	return (-1);
+			count += n;
+		}
 		else if (format[i] == '%' && format[i + 1] == '%')
-			count += (int)write(1, '%', 1);
+		{
+			n = (int)write(1, '%', 1);
+			if (n < 0)
+				return (-1);
+			count += n;
+		}
 //		else if (format[i] == '%' && format[i + 1] != '%')
 //			--- get type & print arg according to its type & increase count ---
 //			count += ft_print_arg(format, ap, i);
