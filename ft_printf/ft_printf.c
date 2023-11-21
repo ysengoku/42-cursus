@@ -14,32 +14,30 @@
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	args; // list of arguments to be printed
-	size_t	count;
+	va_list	ap; // argument pointer (pointer to the list of arguments to be printed)
+	int	count;
+	int	i;
 
 	if (!format)
-		return (0);
-	va_start(args, format);
+		return (-1);
+	va_start(ap, format);
 	count = 0;
-	while (*format)
+	i = 0;
+	while (format[i])
 	{
-//		while (format++ != '%')
-//			--> ft_putchar(format - 1)
-//		if (format == '%' && format + 1 != '%')
-//			--> get type
-//			--> print arg according to its type
-//		else if (format == '%' && format + 1 == '%')
-//			--> ft_putchar('%');
-//		format++;
+		if (format[i] != '%')
+			count += (int)write(1, &format[i], 1); // Need to secure if write returns -1 (erreur)
+		else if (format[i] == '%' && format[i + 1] == '%')
+			count += (int)write(1, '%', 1);
+//		else if (format[i] == '%' && format[i + 1] != '%')
+//			--> get type & print arg according to its type & increase count
+		i++;
 	}
-	va_end(args);
+	va_end(ap);
+	return (count);
 }
 
-
-static char	ft_get_flag(const char *str)
+static char	ft_print_arg(const char *str)
 {
-	size_t	i;
-
-	i = 0;
 	
 }
