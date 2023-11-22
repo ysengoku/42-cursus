@@ -23,7 +23,7 @@ int	ft_printf(const char *format, ...)
 	int	i;
 
 //	if (!format)
-//		return (-1);
+//		return (0);
 	va_start(ap, format); // ap = pointer to the first argument
 	count = 0;
 	i = 0;
@@ -49,9 +49,6 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-// get type 
-// print arg according to its type
-// increase count
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
 	int	count;
@@ -66,8 +63,8 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 //		count += ft_print_ptr(va_arg(ap, void *));
 	else if  (format[i + 1] == 'd' || format[i + 1] == 'i')
 		count += ft_print_nbr(va_arg(ap, int));
-//	else if  (format[i + 1] == 'u')
-//		count += ft_print_unbr();
+	else if  (format[i + 1] == 'u')
+		count += ft_print_unit(va_arg(ap, int));
 //	else if  (format[i + 1] == 'x')
 //		count += ft_print_lowerhex();
 //	else if  (format[i + 1] == 'X')
