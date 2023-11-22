@@ -2,6 +2,8 @@
 
 int	main()
 {
+//	printf(" (%d)\n", ft_printf("hello"));
+
 // ------ TEST1 ------
 	printf("test1 - printf: ");
 	printf(" (%i)\n", printf("%c", 'a'));
