@@ -14,11 +14,7 @@
 
 int	ft_print_char(char c)
 {
-//	char	c;
-
 	if (!c)
 		return (-1);
-//	c = va_arg(ap, int);
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
