@@ -65,10 +65,8 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 		count += ft_print_nbr(va_arg(ap, int));
 	else if  (format[i + 1] == 'u')
 		count += ft_print_unit(va_arg(ap, int));
-//	else if  (format[i + 1] == 'x')
-//		count += ft_print_lowerhex();
-//	else if  (format[i + 1] == 'X')
-//		count += ft_print_upperhex();
+//	else if  (format[i + 1] == 'x' || format[i + 1] == 'X')
+//		count += ft_print_hex(va_arg(ap, int), format[i + 1]);
 	else if (format[i + 1] == '%') 
 		count += write(1, "%", 1);
 	else

@@ -12,7 +12,8 @@
 
 NAME = libftprintf.a
 
-SRCS = 	
+SRCS = 	ft_printf.c \
+		
 
 OBJS = $(SRCS:.c=.o)
 
@@ -31,7 +32,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
