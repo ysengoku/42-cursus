@@ -26,6 +26,6 @@ int	ft_print_str(char *str);
 
 int	ft_print_nbr(int n);
 int	ft_print_unit(int n);
-int	ft_print_hex(int n);
+int	ft_print_hex(int n, char base);
 
 #endif

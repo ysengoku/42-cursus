@@ -22,27 +22,20 @@ int	ft_printf(const char *format, ...)
 	int	n;
 	int	i;
 
-//	if (!format)
-//		return (0);
+	if (!format)
+		return (-1);
 	va_start(ap, format); // ap = pointer to the first argument
 	count = 0;
 	i = 0;
-	while (format[i])
+	while (format[i] != '\0')
 	{
 		if (format[i] != '%')
-		{
 			n = (int)write(1, &format[i], 1); 
-			if (n < 0)
-				return (-1);
-			count += n;
-		}
 		else if (format[i] == '%')
-		{
 			n = ft_print_arg(format, i, ap);
-			if (n < 0)
-				return (-1);
-			count += n;
-		}
+		if (n < 0)
+			return (-1);
+		count += n;
 		i++;
 	}
 	va_end(ap);
@@ -56,11 +49,10 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 	count = 0;
 	if (format[i + 1] == 'c')
 		count += ft_print_char(va_arg(ap, int));
-//		count += write(1, va_arg(ap, char), 1);
 	else if  (format[i + 1] == 's')
 		count += ft_print_str(va_arg(ap, char *));
-//	else if  (format[i + 1] == 'p')
-//		count += ft_print_lowerhex(va_arg(ap, void *));
+	else if  (format[i + 1] == 'p')
+		count += ft_print_hex(va_arg(ap, void *), 'x');
 	else if  (format[i + 1] == 'd' || format[i + 1] == 'i')
 		count += ft_print_nbr(va_arg(ap, int));
 	else if  (format[i + 1] == 'u')
