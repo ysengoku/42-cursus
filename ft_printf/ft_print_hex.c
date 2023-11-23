@@ -13,10 +13,10 @@
 #include "ft_printf.h"
 
 static unsigned int	ft_get_digitcount_hex(int n);
-static char	*ft_convert_negtobi(int n);
+static char	*ft_convert_negtobin(int n);
 static char	*ft_itoa_hex(int n, char base);
 
-int	ft_print_lowerhex(int n, char base)
+int	ft_print_hex(int n, char base)
 {
 	char	*nbr;
 
@@ -53,7 +53,7 @@ static unsigned int	ft_get_digitcount_hex(int n)
 	return (count);
 }
 
-static char	*ft_convert_negtobi(int n)
+static char	*ft_convert_negtobin(int n)
 {
 	char			*res;
 	unsigned int	count;
