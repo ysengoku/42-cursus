@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-static unsigned int	ft_get_digitcount(int n, int base);
+static unsigned int	ft_get_digitcount_hex(int n);
 static char	*ft_convert_negtobi(int n);
-static char	*ft_itoa_base_lhex(int n);
+static char	*ft_itoa_hex(int n, char base);
 
-int	ft_print_lowerhex(int n)
+int	ft_print_lowerhex(int n, char base)
 {
 	char	*nbr;
 
@@ -30,12 +30,12 @@ int	ft_print_lowerhex(int n)
 		ft_putchar_fd('a' + n - 10, 1);
 		return (1);
 	}
-	nbr = ft_itoa_base_lhex(n);
+	nbr = ft_itoa_hex(n, base);
 	ft_putstr_fd(nbr, 1);
 	return (ft_strlen(nbr));
 }
 
-static unsigned int	ft_get_digitcount(int n, int base)
+static unsigned int	ft_get_digitcount_hex(int n)
 {
 	unsigned int	count;
 
@@ -44,16 +44,12 @@ static unsigned int	ft_get_digitcount(int n, int base)
 		count = 0;
 		while(n > 0)
 		{
-			n /= base;
+			n /= 16;
 			count++; 
 		}
 	}
-	else
-	{
-		// count for negative numbers
-	}
-	if (base == 2 && count % 4 != 0)
-		count += 4 - count % 4; // in binary, count has to be a multiple of 4 
+	else if (n < 0)
+		count = 8; // when n < 0, always 8 (convert from 32 bits)
 	return (count);
 }
 
@@ -62,36 +58,35 @@ static char	*ft_convert_negtobi(int n)
 	char			*res;
 	unsigned int	count;
 
-	n *= -1; // get the absolute value
-	count = ft_get_digitcount(n, 2);
-	res = (char *)ft_calloc(count + 1, sizeof(char));
-	while (n > 0)
+	n = n * (-1) - 1; // get the absolute value & minus 1
+	count = MAX_BIT;
+	res = (char *)ft_calloc(MAX_BIT + 1, sizeof(char));
+	while (count > 0)
 	{
 		res[--count] = (n % 2)  + '0';
 		n /= 2;
 	}
-	while (count-- > 0)
-		res[count] = '0';
-	while (res[count++] != '\0')
+    while (res[count])
 	{
-		if (res[count - 1] == '0')
-			res[count - 1] = '1';
-		else if (res[count - 1] == '1')
-			res[count -1] = '0';
+		if (res[count] == '0')
+			res[count++] = '1';
+		else if (res[count] == '1')
+			res[count++] = '0';
 	}
-	// add 0001 to res
 	return (res);
 }
 
-static char	*ft_itoa_base_lhex(int n)
+static char	*ft_itoa_hex(int n, char sp)
 {
 	char	*base;
 	char	*nbr;
 	int		digitcount;
 
-	base = "0123456789abcdef";
-	digitcount = ft_get_digitcount(n, 16);
-	
+	if (sp == 'x')
+		base = BASE_HEXLOWER;
+	else if (sp == 'X')
+		base = BASE_HEXUPPER;
+	digitcount = ft_get_digitcount_hex(n);	
 	nbr = (char *)ft_calloc(digitcount + 1, sizeof(char));
 	if (n > 0)
 	{

@@ -16,12 +16,16 @@
 # include <stdarg.h>
 # include "Libft/libft.h"
 
+# define MAX_BIT 32
+# define BASE_HEXLOWER "0123456789abcdef"
+# define BASE_HEXUPPER "0123456789ABCDEF"
+
 int	ft_printf(const char *format, ...);
 int	ft_print_char(char c);
 int	ft_print_str(char *str);
 
 int	ft_print_nbr(int n);
 int	ft_print_unit(int n);
-int	ft_print_lowerhex(int n);
+int	ft_print_hex(int n);
 
 #endif
