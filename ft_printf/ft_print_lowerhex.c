@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/23 14:42:50 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:34:56 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static unsigned int	ft_get_digitcount(int n, int base)
 	}
 	else
 	{
-
+		// count for negative numbers
 	}
 	if (base == 2 && count % 4 != 0)
 		count += 4 - count % 4; // in binary, count has to be a multiple of 4 
@@ -101,6 +101,6 @@ static char	*ft_itoa_base_lhex(int n)
 			n /= 16;  
 		}
 	}
-	
+	// negative number cases
 	return (nbr);
 }
