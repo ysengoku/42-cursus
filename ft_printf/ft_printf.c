@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:52:27 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/24 09:01:52 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 	else if (format[i + 1] == 's')
 		count += ft_print_str(va_arg(ap, char *));
 	else if (format[i + 1] == 'p')
-		count += ft_print_hex(va_arg(ap, void *), 'x');
+		count += ft_print_ptr(va_arg(ap, void *));
 	else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 		count += ft_print_nbr(va_arg(ap, int));
 	else if (format[i + 1] == 'u')

@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:52:06 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:03:18 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static unsigned int	ft_get_digitcount_hex(int n);
 static char			*ft_convert_negtobin(int n);
 static char			*ft_itoa_hex(int n, char base);
+
+// version hex de putnbr plustot que itoa + putstr ?
 
 int	ft_print_hex(int n, char sp)
 {
