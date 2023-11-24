@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
 AR = ar rcs
 RM = rm
 
-PRINTF_DIR = srcs/ftprintf/		
+PRINTF_DIR = srcs/
 LIBFT_DIR = srcs/Libft/
 OBJS_DIR = .objs/
 
@@ -25,8 +25,8 @@ PRINTF_FILES = ft_printf \
 				ft_print_char \
 				ft_print_str \
 				ft_print_nbr \
-				ft_print_unit \
-				ft_print_hex
+				ft_print_uint \
+				ft_print_hex \
 
 LIBFT_FILES = ft_itoa \
 				ft_strlen \
@@ -47,18 +47,15 @@ OBJF = .cache_exists
 
 all: $(NAME)
 
-# There is a problem here
-# make: *** No rule to make target '.objs/ft_printf.o', needed by 'libftprintf.a'
-# It's ok for Libft files
 $(NAME): $(OBJS_LIBFT) $(OBJS_PRINTF)
-	$(AR) $(NAME) $(OBJS_LIBFT) $(OBJS_PRINTF) 
+	$(AR) $(NAME) $(OBJS_LIBFT) $(OBJS_PRINTF)
 
 $(OBJS_DIR)%.o: $(LIBFT_DIR)%.c | $(OBJF)
 	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 $(OBJS_DIR)%.o: $(PRINTF_DIR)%.c | $(OBJF)
 	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 $(OBJF):
 	@mkdir -p $(OBJS_DIR)
 
