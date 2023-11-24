@@ -6,111 +6,68 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 16:10:58 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/24 11:09:10 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/24 15:35:18 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-INCLUDES = includes/
+INCLUDES = includes
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
-HEADER = ft_print.h
 AR = ar rcs
-RM	= rm -f
+RM = rm
 
-SRCS_FILES_PRINTF = ft_printf \
-					ft_print_char \
-					ft_print_str \
-					ft_print_ptr \
-					ft_print_nbr \
-					ft_print_unit \
-					ft_print_hex
-		
-SRCS_FILES_LIBFT = ft_atoi \
-					ft_strlen \
-					
-LIBFT_DIR = Libft/
+PRINTF_DIR = srcs/ftprintf/		
+LIBFT_DIR = srcs/Libft/
+OBJS_DIR = .objs/
 
-SRCS_PRINTF = $(addsuffix .c, $(SRCS_FILES_PRINTF))
-SRCS_LIBFT = $(addprefix $(LIBFT_DIR), $(addsuffix .c, $(SRCS_FILES_PRINTF)))
+PRINTF_FILES = ft_printf \
+				ft_print_char \
+				ft_print_str \
+				ft_print_nbr \
+				ft_print_unit \
+				ft_print_hex
 
-SRCS = $(SRCS_PRINTF)
-SRCS += $(SRCS_LIBFT)
+LIBFT_FILES = ft_itoa \
+				ft_strlen \
+				ft_putchar_fd \
+				ft_putstr_fd \
+				ft_calloc
 
-OBJS = $(SRCS:.c=.o)
+SRCS_LIBFT = $(addprefix $(LIBFT_DIR), $(addsuffix .c, $(LIBFT_FILES)))
+SRCS_PRINTF = $(addprefix $(PRINTF_DIR), $(addsuffix .c, $(PRINTF_FILES)))
+
+#SRCS = $(SRCS_LIBFT)
+#SRCS += $(SRCS_PRINTF)
+
+OBJS_LIBFT = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(LIBFT_FILES)))
+OBJS_PRINTF = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(PRINTF_FILES)))
+
+OBJF = .cache_exists
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+# There is a problem here
+# make: *** No rule to make target '.objs/ft_printf.o', needed by 'libftprintf.a'
+# It's ok for Libft files
+$(NAME): $(OBJS_LIBFT) $(OBJS_PRINTF)
+	$(AR) $(NAME) $(OBJS_LIBFT) $(OBJS_PRINTF) 
 
-%.o: %.c $(HEADER)
+$(OBJS_DIR)%.o: $(LIBFT_DIR)%.c | $(OBJF)
 	$(CC) $(CFLAGS) -c $< -o $@
+	
+$(OBJS_DIR)%.o: $(PRINTF_DIR)%.c | $(OBJF)
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+$(OBJF):
+	@mkdir -p $(OBJS_DIR)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) -rf $(OBJS_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) -f $(NAME)
 
 re: fclean $(NAME)
 
 .PHONY: all clean fclean re
-
-
-
-#General
-
-NAME            =    printf.a
-INCLUDES        =    include
-LIBFT_SRC_DIR    =    src/libft/
-PRINTF_SRC_DIR    =    src/printf/
-OBJ_DIR            =    obj/
-
-CC            =    gcc
-CFLAGS        =    -Wall -Wextra -Werror -I$(INCLUDES)
-
-RM            =    rm
-AR            =    ar rcs
-
-
-#Sources
-
-LIBFT_SRC_FILES        =    ft_printf    ft_printf_char    ft_printf_ptr    ft_printf_nbr    ft_printf_hex
-PRINTF_SRC_FILES    =    ft_itoa        ft_putchar_fd
-SRC_FILES    =    $(LIBFT_SRC)
-SRC_FILES    +=    $(PRINTF_SRC)
-
-LIBFT_SRC    =    $(addprefix $(LIBFT_SRC_DIR), $(addsuffix .c, $(LIBFT_SRC_FILES)))
-PRINTF_SRC    =    $(addprefix $(PRINTF_SRC_DIR), $(addsuffix .c, $(PRINTF_SRC_FILES)))
-LIBFT_OBJ    =    $(addprefix $(OBJ_DIR), $(addsuffix .o, $(LIBFT_SRC_FILES)))
-PRINTF_OBJ    =    $(addprefix $(OBJ_DIR), $(addsuffix .o, $(PRINTF_SRC_FILES)))
-
-
-#Commands
-
-OBJF        =    .cache_exists
-
-all:        $(NAME)
-
-$(NAME):    $(LIBFT_OBJ) $(PRINTF_OBJ)
-                $(AR) $(NAME) $(LIBFT_OBJ) $(PRINTF_OBJ)
-
-$(OBJ_DIR)%.o: $(LIBFT_SRC_DIR)%.c | $(OBJF)
-                $(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(PRINTF_SRC_DIR)%.c | $(OBJF)
-                $(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJF):
-                @mkdir -p $(OBJ_DIR)
-
-clean:
-                $(RM) -rf $(OBJ_DIR)
-
-fclean:        clean
-                $(RM) -f $(NAME)
-
-re:            fclean all
-
-.PHONY:        all clean fclean re
