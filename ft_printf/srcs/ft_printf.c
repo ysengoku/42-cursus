@@ -32,7 +32,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] != '%')
 			n = (int)write(1, &format[i], 1);
 		else if (format[i] == '%')
-			n = ft_print_arg(format, i, ap);
+			n = ft_print_arg(format, i++, ap);
 		if (n < 0)
 			return (-1);
 		count += n;
