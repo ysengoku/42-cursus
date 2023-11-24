@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 08:34:37 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:00:04 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/24 08:50:58 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int	ft_printf(const char *format, ...);
 int	ft_print_char(char c);
 int	ft_print_str(char *str);
-int	ft_print_ptr(void * arg);
+int	ft_print_ptr(void *arg);
 int	ft_print_nbr(int n);
 int	ft_print_unit(int n);
 int	ft_print_hex(int n, char sp);
