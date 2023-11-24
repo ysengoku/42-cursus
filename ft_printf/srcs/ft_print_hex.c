@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
 static unsigned int	ft_get_digitcount_hex(int n);
 static char			*ft_itoa_hex(int n, char base);

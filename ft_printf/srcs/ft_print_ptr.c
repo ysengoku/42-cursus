@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 08:30:53 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:54:12 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/22 15:28:26 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/24 09:33:50 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-int	ft_print_str(char *str)
+int	ft_print_ptr(void *arg)
 {
-	if (!str)
+	char	*hex_flag;
+
+	if (!arg)
 		return (-1);
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	hex_flag = "0x";
+	return (write(1, hex_flag, 2) + ft_print_hex((int *)arg, 'x'));
+
+	// ft_print_lowerhex(int n) 4 bytes < arg == *void 8 bytes
 }
