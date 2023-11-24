@@ -6,15 +6,15 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 07:59:52 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/24 08:52:06 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static unsigned int	ft_get_digitcount_hex(int n);
-static char	*ft_convert_negtobin(int n);
-static char	*ft_itoa_hex(int n, char base);
+static char			*ft_convert_negtobin(int n);
+static char			*ft_itoa_hex(int n, char base);
 
 int	ft_print_hex(int n, char sp)
 {
@@ -42,10 +42,10 @@ static unsigned int	ft_get_digitcount_hex(int n)
 	if (n > 0)
 	{
 		count = 0;
-		while(n > 0)
+		while (n > 0)
 		{
 			n /= 16;
-			count++; 
+			count++;
 		}
 	}
 	else if (n < 0)
@@ -63,10 +63,10 @@ static char	*ft_convert_negtobin(int n)
 	res = (char *)ft_calloc(MAX_BIT + 1, sizeof(char));
 	while (count > 0)
 	{
-		res[--count] = (n % 2)  + '0';
+		res[--count] = (n % 2) + '0';
 		n /= 2;
 	}
-    while (res[count])
+	while (res[count])
 	{
 		if (res[count] == '0')
 			res[count++] = '1';
@@ -86,14 +86,14 @@ static char	*ft_itoa_hex(int n, char sp)
 		base = BASE_HEXLOWER;
 	else if (sp == 'X')
 		base = BASE_HEXUPPER;
-	digitcount = ft_get_digitcount_hex(n);	
+	digitcount = ft_get_digitcount_hex(n);
 	nbr = (char *)ft_calloc(digitcount + 1, sizeof(char));
 	if (n > 0)
 	{
 		while (n > 0)
 		{
 			nbr[--digitcount] = base[n % 16];
-			n /= 16;  
+			n /= 16;
 		}
 	}
 	// negative number cases
