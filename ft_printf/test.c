@@ -2,9 +2,13 @@
 
 int	main()
 {
-//	printf(" (%d)\n", ft_printf("hello"));
+	printf("-------- TEST / no type specifier --------\n");
+	printf("printf: ");
+	printf(" (%i)\n", printf("hello"));
+//	printf("ft_printf: ");
+//	printf(" (%i)\n\n", ft_printf("hello"));
 
-	printf("-------- TEST / c --------\n");
+	printf("\n-------- TEST / c --------\n");
 	printf("printf: ");
 	printf(" (%i)\n", printf("%c", 'a'));
 //	printf(ft_printf: ");
@@ -73,9 +77,9 @@ int	main()
 
 	printf("\n-------- TEST / X --------\n");
 	printf("printf: ");
-	printf(" (%i)\n", printf("%X", -365));
+	printf(" (%i)\n", printf("%X", -27));
 //	printf("ft_printf: ");
-//	printf(" (%i)\n\n",ft_printf("%X", -365));
+//	printf(" (%i)\n\n",ft_printf("%X", -27));
 
 	printf("\n-------- TEST / %% --------\n");
 	printf("printf: ");
@@ -89,19 +93,25 @@ int	main()
 //	printf("ft_printf: ");
 //	printf(" (%i)\n\n",ft_printf("I'm %s, %d years old", "Coco", 18));
 
-	printf("\n-------- TEST / nil --------\n");
+	printf("\n-------- TEST / empty --------\n");
 	printf("printf: ");
 	printf(" (%i)\n", printf(""));
 //	printf("ft_printf: ");
 //	printf(" (%i)\n\n",ft_printf(""));
 
-//	printf("\n-------- TEST --------\n");
+//	printf("\n-------- TEST / nil arg --------\n");
+//	printf("printf: ");
+//	printf(" (%i)\n", printf("%c"));
+//	printf("ft_printf: ");
+//	printf(" (%i)\n\n",ft_printf(""));
+
+//	printf("\n-------- TEST / bad type arg --------\n");
 //	printf("printf: ");
 //	printf(" (%i)\n", printf("%s", 123));
 //	printf("ft_printf: ");
 //	printf(" (%i)\n\n", ft_printf("%s", 123));
 
-//	printf("\n-------- TEST --------\n");
+//	printf("\n-------- TEST / bad type arg --------\n");
 //	printf("printf: ");
 //	printf(" (%i)\n", printf("%i", 'A'));
 //	printf("ft_printf: ");
