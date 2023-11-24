@@ -25,7 +25,7 @@ int	ft_print_char(char c);
 int	ft_print_str(char *str);
 int	ft_print_ptr(void *arg);
 int	ft_print_nbr(int n);
-int	ft_print_unit(int n);
+int	ft_print_uint(int n);
 int	ft_print_hex(int n, char sp);
 
 #endif
