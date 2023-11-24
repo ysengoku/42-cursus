@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 08:34:37 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:50:58 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:11:52 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "Libft/libft.h"
+# include "libft.h"
 
 # define MAX_BIT 32
 # define BASE_HEXLOWER "0123456789abcdef"
