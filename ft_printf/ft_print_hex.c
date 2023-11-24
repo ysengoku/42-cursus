@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_lowerhex.c                                :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/23 15:34:56 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/24 07:59:52 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static unsigned int	ft_get_digitcount_hex(int n);
 static char	*ft_convert_negtobin(int n);
 static char	*ft_itoa_hex(int n, char base);
 
-int	ft_print_hex(int n, char base)
+int	ft_print_hex(int n, char sp)
 {
 	char	*nbr;
 
@@ -30,7 +30,7 @@ int	ft_print_hex(int n, char base)
 		ft_putchar_fd('a' + n - 10, 1);
 		return (1);
 	}
-	nbr = ft_itoa_hex(n, base);
+	nbr = ft_itoa_hex(n, sp);
 	ft_putstr_fd(nbr, 1);
 	return (ft_strlen(nbr));
 }
