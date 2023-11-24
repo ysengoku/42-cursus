@@ -1,12 +1,14 @@
-#include "ft_printf.h"
+// cc -Wall -Wextra -Werror  -I/includes test.c includes/ft_printf.h includes/libft.h srcs/*.c
+#include "includes/ft_printf.h"
+#include <stdio.h>
 
 int	main()
 {
 	printf("-------- TEST / no type specifier --------\n");
 	printf("printf: ");
 	printf(" (%i)\n", printf("hello"));
-//	printf("ft_printf: ");
-//	printf(" (%i)\n\n", ft_printf("hello"));
+	printf("ft_printf: ");
+	printf(" (%i)\n\n", ft_printf("hello"));
 
 	printf("\n-------- TEST / c --------\n");
 	printf("printf: ");
