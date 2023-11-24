@@ -6,12 +6,12 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 11:12:31 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:24:18 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
+#include "../../includes/ft_printf.h"
+#include "../../includes/libft.h"
 
 static int	ft_print_arg(const char *format, int i, va_list ap);
 
