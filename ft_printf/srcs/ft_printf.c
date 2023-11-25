@@ -15,6 +15,8 @@
 
 static int	ft_print_arg(const char *format, int i, va_list ap);
 
+//	check if specifier type == va_arg type, if it's not same, return error 
+
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap; // ap(argument pointer) = pointer to 'format'
@@ -44,8 +46,7 @@ int	ft_printf(const char *format, ...)
 
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
-	int	count;
-
+	int	count; 
 	count = 0;
 	if (format[i + 1] == 'c')
 		count += ft_print_char(va_arg(ap, int));

@@ -16,7 +16,7 @@ int	main()
 	printf(" (%i)\n", printf("%c", 'a'));
 
 	printf("\n-------- TEST / s --------\n");
-	printf(" (%i)\n", ft_printf("%s\n", "hello"));
+	printf(" (%i)\n", ft_printf("%s", "hello"));
 	printf("printf: ");
 	printf(" (%i)\n", printf("%s", "hello"));
 
