@@ -13,25 +13,53 @@
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
+static unsigned int	ft_get_digitcount_hex(unsigned long n);
+static int	ft_print_hexlong(unsigned long n, char sp);
+
 int	ft_print_ptr(void *arg)
 {
-	char	*hex_flag;
+	char            *hex_flag;
+	unsigned  long  ptr;
 
 	if (!arg)
 		return (-1);
+	// check unsigned long size. It must be more than 8 (size of pointer == 8)
+	printf("size of unsigned long : %lu\n", sizeof(unsigned long));
+	ptr = (unsigned long)arg;
 	hex_flag = "0x";
-	return (write(1, hex_flag, 2) + ft_print_hex(*(int *)arg, 'x'));
+	return (write(1, hex_flag, 2) + ft_print_hexlong(ptr, 'x'));
 }
 
-/*
-ft_print_lowerhex(int n) 4 bytes < arg == *void 8 bytes
+static unsigned int	ft_get_digitcount_hex(unsigned long n)
+{
+	unsigned int	count;
 
-srcs/ft_print_ptr.c:23:47: error: incompatible pointer to integer conversion passing 'int *' to parameter of type 'int'; dereference with * [-Werror,-Wint-conversion]
-        return (write(1, hex_flag, 2) + ft_print_hex((int *)arg, 'x'));
-                                                     ^~~~~~~~~~
-                                                     *
-srcs/../includes/ft_printf.h:29:22: note: passing argument to parameter 'n' here
-int     ft_print_hex(int n, char sp);
-                         ^
-1 error generated.
-*/
+	count = 0;
+	while (n > 0)
+	{
+		n /= 16;
+		count++;
+	}
+	return (count);
+}
+
+static int	ft_print_hexlong(unsigned long n, char sp)
+{
+	char			*base;
+	char			*digits;
+	int				digitcount;
+
+	if (sp == 'x')
+		base = BASE_HEXLOWER;
+	else if (sp == 'X')
+		base = BASE_HEXUPPER;
+	digitcount = ft_get_digitcount_hex(n);
+	digits = (char *)ft_calloc(digitcount + 1, sizeof(char));
+	while (n > 0)
+	{
+		digits[--digitcount] = base[n % 16];
+		n /= 16;
+	}
+	ft_putstr_fd(digits, 1);
+	return (ft_strlen(digits));
+}
