@@ -64,5 +64,6 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 		count += write(1, "%", 1);
 	else
 		return (-1);
+	//	count += (write(1, &format[i], 1) + write(1, &format[i + 1], 1));
 	return (count);
 }
