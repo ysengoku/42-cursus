@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 08:53:29 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:54:21 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:24:01 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int	ft_print_nbr(int n)
 {
 	char	*nbr;
 
-//	if (n < INT_MIN && n > INT_MAX)
-//		return (-1);
 	nbr = ft_itoa(n);
-	ft_putstr_fd(nbr, 1);
-	return (ft_strlen(nbr));
+	return (ft_print_str(nbr));
 }

@@ -1,6 +1,7 @@
 // cc -Wall -Wextra -Werror  -I/includes test.c includes/ft_printf.h includes/libft.h srcs/*.c srcs/Libft/*.c
 
 #include "includes/ft_printf.h"
+#include "includes/libft.h"
 #include <stdio.h>
 
 int	main()
@@ -21,10 +22,16 @@ int	main()
 	printf(" (%i)\n\n", printf("%s", "hello"));
 
 	printf("\n------------- TEST / p -------------\n");
-	const char	*testp = "hello";
-	printf(" (%i)\n", ft_printf("%p", testp));
+	const char	*teststr = "hello";
+	printf(" (%i)\n", ft_printf("%p", teststr));
 	printf("printf: ");
-	printf(" (%i)\n\n", printf("%p", testp));
+	printf(" (%i)\n\n", printf("%p", teststr));
+
+	int	*testd = (int *)ft_calloc(2, sizeof(int));
+	printf(" (%i)\n", ft_printf("%p", testd));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%p", testd));
+	free(testd);
 
 	printf("\n------------- TEST / d & i------------\n");
 	printf(" (%i)\n", ft_printf("%d", -42));
@@ -38,6 +45,18 @@ int	main()
 	printf(" (%i)\n", ft_printf("%d", 2147483647));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%d", 2147483647));
+
+	printf(" (%i)\n", ft_printf("%d", 'a'));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%d", 'a'));
+
+//	printf(" (%i)\n", ft_printf("%d", "abc")); //--> print something & return its length 
+//	printf("printf: ");
+//	printf(" (%i)\n\n", printf("%d", "abc")); //--> format specifies type != argument type
+
+	printf(" (%i)\n", ft_printf("%d", -2147483648));
+//	printf("printf: ");
+//	printf(" (%i)\n\n", printf("%d", -2147483648)); //--> Original printf can't handle INT_MIN
 
 	printf("\n------------- TEST / u -------------\n");
 	printf(" (%i)\n", ft_printf("%u", 42));
@@ -81,8 +100,8 @@ int	main()
 	printf("printf: ");
 	printf(" (%i)\n\n", printf(""));
 
-	printf("\n------------- TEST / invalid specifier -------------\n");
-//	printf(" (%i)\n",ft_printf("%a", "Coucou")); // --> write nothing & return -1 
+//	printf("\n------------- TEST / invalid specifier -------------\n");
+//	printf(" (%i)\n",ft_printf("%a", "Coucou")); //--> write nothing & return -1 
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%a", "Coucou"));
 
@@ -96,7 +115,7 @@ int	main()
 //	printf("ft_printf: ");
 //	printf(" (%i)\n\n",ft_printf("%c")); // ---> write something & return 0
 
-	printf("\n-------- TEST / bad type arg --------\n");
+//	printf("\n-------- TEST / bad type arg --------\n");
 //	printf("printf: ");
 //	printf(" (%i)\n", printf("%s", 123));
 //	printf("ft_printf: ");

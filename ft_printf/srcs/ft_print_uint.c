@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 08:52:58 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 08:15:54 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:31:00 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ int	ft_print_uint(int n)
 
 	nbr = (unsigned int)n;
 	count = ft_get_digits_count((long)nbr);
-	digits = (char *)malloc((count + 1) * sizeof(char));
+	digits = (char *)ft_calloc(count + 1, sizeof(char));
 	if (!digits)
 		return (-1);
-	digits[count] = '\0';
 	if (nbr == 0)
 		digits[--count] = '0';
 	while (nbr > 0)
@@ -34,8 +33,7 @@ int	ft_print_uint(int n)
 		digits[--count] = nbr % 10 + '0';
 		nbr /= 10;
 	}
-	ft_putstr_fd(digits, 1);
-	return ((int)ft_strlen(digits));
+	return (ft_print_str(digits));
 }
 
 static int	ft_get_digits_count(long n)

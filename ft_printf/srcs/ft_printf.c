@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 08:17:40 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:12:52 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ static int	ft_print_arg(const char *format, int i, va_list ap);
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	ap; // ap(argument pointer) = pointer to 'format'
+	va_list	ap;
 	int		count;
 	int		n;
 	int		i;
 
 	if (!format)
 		return (-1);
-	va_start(ap, format); // ap = pointer to the first argument
+	va_start(ap, format);
 	count = 0;
 	i = 0;
 	while (format[i] != '\0')
@@ -47,6 +47,7 @@ int	ft_printf(const char *format, ...)
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
 	int	count;
+	
 	count = 0;
 	if (format[i + 1] == 'c')
 		count += ft_print_char(va_arg(ap, int));
