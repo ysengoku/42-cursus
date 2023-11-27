@@ -22,7 +22,7 @@ int	ft_print_ptr(void *arg)
 	unsigned long	ptr;
 
 	if (!arg)
-		return (-1);
+		return (ft_print_str("(nil)"));
 	ptr = (unsigned long)arg;
 	hex_flag = "0x";
 	return (write(1, hex_flag, 2) + ft_print_hexlong(ptr, 'x'));

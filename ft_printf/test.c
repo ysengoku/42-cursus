@@ -21,6 +21,10 @@ int	main()
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%s", "hello"));
 
+	printf(" (%i)\n", ft_printf(" NULL %s NULL ", (char *)NULL));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf(" NULL %s NULL ", (char *)NULL));
+
 	printf("\n------------- TEST / p -------------\n");
 	const char	*teststr = "hello";
 	printf(" (%i)\n", ft_printf("%p", teststr));
@@ -32,6 +36,10 @@ int	main()
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%p", testd));
 	free(testd);
+
+	printf(" (%i)\n", ft_printf(" %p %p ", (void *)0, (void *)0));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf(" %p %p ", (void *)0, (void *)0));
 
 	printf("\n------------- TEST / d & i------------\n");
 	printf(" (%i)\n", ft_printf("%d", -42));
@@ -54,7 +62,7 @@ int	main()
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%d", "abc")); //--> format specifies type != argument type
 
-	printf(" (%i)\n", ft_printf("%d", -2147483648));
+//	printf(" (%i)\n", ft_printf("%d", -2147483648));
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%d", -2147483648)); //--> Original printf can't handle INT_MIN
 
@@ -76,6 +84,10 @@ int	main()
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%x", 9));
 
+	printf(" (%i)\n",ft_printf("%x", 0));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%x", 0));
+
 	printf("\n------------- TEST / X -------------\n");
 	printf(" (%i)\n",ft_printf("%X", 12));
 	printf("printf: ");
@@ -84,6 +96,10 @@ int	main()
 	printf(" (%i)\n",ft_printf("%X", -27));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%X", -27));
+
+	printf(" (%i)\n",ft_printf("%X, %X", INT_MAX, INT_MIN));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%X, %X", INT_MAX, INT_MIN));
 
 	printf("\n------------ TEST / %% -------------\n");
 	printf(" (%i)\n",ft_printf("%%"));
