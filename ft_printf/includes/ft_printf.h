@@ -17,8 +17,8 @@
 # include "libft.h"
 
 # define MAX_BIT 32
-# define BASE_HEXLOWER "0123456789abcdef"
-# define BASE_HEXUPPER "0123456789ABCDEF"
+# define BASE_HEX_LOWER "0123456789abcdef"
+# define BASE_HEX_UPPER "0123456789ABCDEF"
 
 int	ft_printf(const char *format, ...);
 int	ft_print_char(char c);
