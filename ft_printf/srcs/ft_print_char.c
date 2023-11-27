@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 14:52:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:53:17 by yusengok         ###   ########.fr       */
+/*   Created: 2023/11/27 11:58:07 by yusengok          #+#    #+#             */
+/*   Updated: 2023/11/27 11:59:56 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,5 @@
 
 int	ft_print_char(char c)
 {
-	if (!c)
-		return (-1);
 	return (write(1, &c, 1));
 }
