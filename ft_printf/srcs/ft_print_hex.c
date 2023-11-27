@@ -80,58 +80,33 @@ static char	*ft_itoa_hex(int n, char sp)
 #include <stdio.h>
 #include <unistd.h>
 
-void    ft_putchar_fd(char c, int fd)
+int    ft_print_char(char c)
 {
-    write(fd, &c, 1);
-}
-
-static unsigned int	ft_get_digitcount_hex(int n)
-{
-	unsigned int	count;
-
-	count = 0;
-	if (n > 0)
-	{
-		while (n > 0)
-		{
-			n /= 16;
-			count++;
-		}
-	}
-	else
-		count = 8; // when n < 0, always 8 (convert from 32 bits)
-	return (count);
+    return (write(1, &c, 1));
 }
 
 int    ft_print_hex(int n, char sp)
 {
     unsigned int    nbr = n;
-//    int count = 0;
+    int count;
+    char  *base;
 
-    if (nbr > 15)
+    if (sp == 'x')
+      base = BASE_HEX_LOWER;
+    else if (sp == 'X')
+      base = BASE_HEX_UPPER;
+    if (nbr < 16)
+      ft_print_char(base[nbr]);
+    else
     {
-        ft_print_hex(nbr / 16, sp);
-        ft_print_hex(nbr % 16, sp);
+      count = ft_print_hex(nbr / 16, sp);
+      return (count + ft_print_hex(nbr % 16, sp));
     }
-    else if (nbr >= 0 && nbr <= 9)
-    {
-        ft_putchar_fd(n + '0', 1);
-        count += 1;
-    }
-    else if (nbr > 9 && nbr < 16)
-    {
-        if (sp == 'x')
-            ft_putchar_fd('a' + nbr - 10, 1);
-        else if (sp == 'X')
-            ft_putchar_fd('A' + nbr - 10, 1);
-        count += 1;
-    }
-    return (ft_get_digitcount_hex(n));
- //   return (count);
 }
 
-int main() {
-    int    arg = 6908;
+int main() 
+{
+    int    arg = 1011;
     
     unsigned int    n = arg;
     printf("Signed int value : %i\n", arg);
@@ -142,4 +117,3 @@ int main() {
     printf(" (%i)\n", ft_print_hex(arg, 'X'));
     return 0;
 }
-*/
