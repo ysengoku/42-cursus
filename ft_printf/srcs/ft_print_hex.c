@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 09:25:22 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:42:57 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_print_hex(int n, char sp)
 {
 	char	*nbr;
 
+	if (n == 0)
+		return (write(1, "0", 1));
 	nbr = ft_itoa_hex(n, sp);
 	return (ft_print_str(nbr));
 }
@@ -38,15 +40,17 @@ static unsigned int	ft_get_digitcount_hex(int n)
 		}
 	}
 	else
-		count = MAX_BIT / 4; // when n < 0, always 8 (convert from 32 bits)
+		count = MAX_BIT / 4;
 	return (count);
 }
-/*
+/* 
+* When n < 0, digit count are always 8 (convert from 32 bits)
+*
 * When the input is a negative int, the conversion is as bellow:
 * 1. Convert the negative int (decimal) to binary
-		binary == 32 bits here
+*		binary == 32 bits, here
 * 2. Convert it from binary to hex 
-		4 bits == 1 digit in hex
+*		4 bits == 1 digit in hex
 */
 
 static char	*ft_itoa_hex(int n, char sp)
