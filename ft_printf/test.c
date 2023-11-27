@@ -42,17 +42,17 @@ int	main()
 	printf(" (%i)\n\n", printf(" %p %p ", (void *)0, (void *)0));
 
 	printf("\n------------- TEST / d & i------------\n");
-	printf(" (%i)\n", ft_printf("%d", -42));
+	printf(" (%i)\n", ft_printf("%d, %d", -42, -5));
 	printf("printf: ");
-	printf(" (%i)\n\n", printf("%d", -42));	
+	printf(" (%i)\n\n", printf("%d, %d", -42, -5));	
 
-	printf(" (%i)\n", ft_printf("%i", 0));
+	printf(" (%i)\n", ft_printf("%i, %i", 0, 7));
 	printf("printf: ");
-	printf(" (%i)\n\n", printf("%i", 0));
+	printf(" (%i)\n\n", printf("%i, %i", 0, 7));
 
-	printf(" (%i)\n", ft_printf("%d", 2147483647));
+	printf(" (%i)\n", ft_printf("%d, %d", INT_MAX, INT_MIN));
 	printf("printf: ");
-	printf(" (%i)\n\n", printf("%d", 2147483647));
+	printf(" (%i)\n\n", printf("%d, %d", INT_MAX, INT_MIN));
 
 	printf(" (%i)\n", ft_printf("%d", 'a'));
 	printf("printf: ");
@@ -74,6 +74,10 @@ int	main()
 	printf(" (%i)\n", ft_printf("%u", -123));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%u", -123));
+
+	printf(" (%i)\n", ft_printf("%u, %u", INT_MIN, INT_MAX));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%u, %u", INT_MIN, INT_MAX));
 
 	printf("\n------------- TEST / x -------------\n");
 	printf(" (%i)\n",ft_printf("%x", 1011));
