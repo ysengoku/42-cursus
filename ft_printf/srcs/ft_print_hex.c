@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 08:14:10 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:25:22 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	ft_print_hex(int n, char sp)
 	char	*nbr;
 
 	nbr = ft_itoa_hex(n, sp);
-	ft_putstr_fd(nbr, 1);
-	return (ft_strlen(nbr));
+	return (ft_print_str(nbr));
 }
 
 static unsigned int	ft_get_digitcount_hex(int n)

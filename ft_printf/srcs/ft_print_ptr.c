@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:28:26 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 08:15:10 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:27:55 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,5 @@ static int	ft_print_hexlong(unsigned long n, char sp)
 		digits[--digitcount] = base[n % 16];
 		n /= 16;
 	}
-	ft_putstr_fd(digits, 1);
-	return (ft_strlen(digits));
+	return (ft_print_str(digits));
 }
