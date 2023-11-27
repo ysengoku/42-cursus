@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 13:12:10 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/21 10:12:24 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/27 11:29:59 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,13 +68,13 @@ RM	= rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEAD)
 	$(AR) $(NAME) $(OBJS)
 
 bonus: all $(OBJS_BONUS)
 	$(AR) $(NAME) $(OBJS_BONUS)
 
-%.o: %.c $(HEAD)
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
