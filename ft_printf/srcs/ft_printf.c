@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 10:12:52 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:41:08 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_printf(const char *format, ...)
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
 	int	count;
-	
+
 	count = 0;
 	if (format[i + 1] == 'c')
 		count += ft_print_char(va_arg(ap, int));
