@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 15:24:18 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 08:17:40 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int	ft_print_arg(const char *format, int i, va_list ap);
 
-//	check if specifier type == va_arg type, if it's not same, return error 
+//	check if specifier type == va_arg type, if it's not same, return error ?
 
 int	ft_printf(const char *format, ...)
 {
@@ -46,7 +46,7 @@ int	ft_printf(const char *format, ...)
 
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
-	int	count; 
+	int	count;
 	count = 0;
 	if (format[i + 1] == 'c')
 		count += ft_print_char(va_arg(ap, int));
@@ -58,12 +58,11 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 		count += ft_print_nbr(va_arg(ap, int));
 	else if (format[i + 1] == 'u')
 		count += ft_print_uint(va_arg(ap, int));
-	else if  (format[i + 1] == 'x' || format[i + 1] == 'X')
+	else if (format[i + 1] == 'x' || format[i + 1] == 'X')
 		count += ft_print_hex(va_arg(ap, int), format[i + 1]);
 	else if (format[i + 1] == '%')
 		count += write(1, "%", 1);
 	else
 		return (-1);
-	//	count += (write(1, &format[i], 1) + write(1, &format[i + 1], 1));
 	return (count);
 }
