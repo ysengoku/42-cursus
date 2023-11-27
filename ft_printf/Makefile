@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 16:10:58 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/27 08:21:14 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/27 11:36:50 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,23 +23,19 @@ OBJS_DIR = .objs/
 
 PRINTF_FILES = ft_printf \
 				ft_print_char \
+				ft_print_ptr \
 				ft_print_str \
 				ft_print_nbr \
 				ft_print_uint \
-				ft_print_hex \
-				ft_print_ptr
+				ft_print_hex
 
 LIBFT_FILES = ft_itoa \
-				ft_strlen \
 				ft_putchar_fd \
 				ft_putstr_fd \
 				ft_calloc
 
 SRCS_LIBFT = $(addprefix $(LIBFT_DIR), $(addsuffix .c, $(LIBFT_FILES)))
 SRCS_PRINTF = $(addprefix $(PRINTF_DIR), $(addsuffix .c, $(PRINTF_FILES)))
-
-#SRCS = $(SRCS_LIBFT)
-#SRCS += $(SRCS_PRINTF)
 
 OBJS_LIBFT = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(LIBFT_FILES)))
 OBJS_PRINTF = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(PRINTF_FILES)))
