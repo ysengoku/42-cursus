@@ -36,7 +36,7 @@ int    ft_print_nbr(int n)
 	if (n < 0)
 	{
 		return (write(1, "-", 1) + ft_print_nbr(nbr * -1));
-	} // does not work with INT_MIN
+	} // does not work with INT_MIN because ft_print_nbr cannot accept 2147483648
 	else if (nbr < 10)
 		ft_print_char(nbr + '0');
 	else
