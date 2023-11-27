@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 08:52:58 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 08:54:33 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 08:15:54 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	ft_get_digits_count(long n);
 
 int	ft_print_uint(int n)
 {
-    unsigned int	nbr;
-    char			*digits;
+	unsigned int	nbr;
+	char			*digits;
 	int				count;
 
 	nbr = (unsigned int)n;
@@ -38,22 +38,22 @@ int	ft_print_uint(int n)
 	return ((int)ft_strlen(digits));
 }
 
-	static int    ft_get_digits_count(long n)
+static int	ft_get_digits_count(long n)
 {
-    int    count;
+	int	count;
 
-    count = 0;
-    if (n < 0)
-    {
-        count += 1;
-        n *= -1;
-    }
-    if (n == 0)
-        count = 1;
-    while (n > 0)
-    {
-        n /= 10;
-        count++;
-    }
-    return (count);
+	count = 0;
+	if (n < 0)
+	{
+		count += 1;
+		n *= -1;
+	}
+	if (n == 0)
+		count = 1;
+	while (n > 0)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
 }

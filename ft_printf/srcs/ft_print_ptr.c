@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:28:26 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/24 09:33:50 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/27 08:15:10 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 #include "../includes/libft.h"
 
 static unsigned int	ft_get_digitcount_hex(unsigned long n);
-static int	ft_print_hexlong(unsigned long n, char sp);
+static int			ft_print_hexlong(unsigned long n, char sp);
 
 int	ft_print_ptr(void *arg)
 {
-	char            *hex_flag;
-	unsigned  long  ptr;
+	char			*hex_flag;
+	unsigned long	ptr;
 
 	if (!arg)
 		return (-1);
-	// check unsigned long size. It must be more than 8 (size of pointer == 8)
-	printf("size of unsigned long : %lu\n", sizeof(unsigned long));
 	ptr = (unsigned long)arg;
 	hex_flag = "0x";
 	return (write(1, hex_flag, 2) + ft_print_hexlong(ptr, 'x'));
