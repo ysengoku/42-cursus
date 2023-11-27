@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 16:10:58 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/24 15:35:18 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/27 08:21:14 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ PRINTF_FILES = ft_printf \
 				ft_print_nbr \
 				ft_print_uint \
 				ft_print_hex \
+				ft_print_ptr
 
 LIBFT_FILES = ft_itoa \
 				ft_strlen \
