@@ -62,9 +62,9 @@ static char	*ft_itoa_hex(int n, char sp)
 
 	nbr = n;
 	if (sp == 'x')
-		base = BASE_HEXLOWER;
+		base = BASE_HEX_LOWER;
 	else if (sp == 'X')
-		base = BASE_HEXUPPER;
+		base = BASE_HEX_UPPER;
 	digitcount = ft_get_digitcount_hex(n);
 	digits = (char *)ft_calloc(digitcount + 1, sizeof(char));
 	while (nbr > 0)
@@ -117,3 +117,4 @@ int main()
     printf(" (%i)\n", ft_print_hex(arg, 'X'));
     return 0;
 }
+*/

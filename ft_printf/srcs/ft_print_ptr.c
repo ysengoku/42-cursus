@@ -48,9 +48,9 @@ static int	ft_print_hexlong(unsigned long n, char sp)
 	int				digitcount;
 
 	if (sp == 'x')
-		base = BASE_HEXLOWER;
+		base = BASE_HEX_LOWER;
 	else if (sp == 'X')
-		base = BASE_HEXUPPER;
+		base = BASE_HEX_UPPER;
 	digitcount = ft_get_digitcount_hex(n);
 	digits = (char *)ft_calloc(digitcount + 1, sizeof(char));
 	while (n > 0)
