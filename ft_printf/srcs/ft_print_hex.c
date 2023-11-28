@@ -13,9 +13,6 @@
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
-#include <stdio.h>
-#include <unistd.h>
-
 int	ft_print_hex(int n, char sp)
 {
 	unsigned int	nbr;
