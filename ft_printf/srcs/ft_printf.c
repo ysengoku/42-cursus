@@ -42,6 +42,7 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
+
 static int	ft_check_specifiers(const char *format)
 {
 	size_t	i;

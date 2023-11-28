@@ -168,30 +168,49 @@ int	main()
 	printf(" (%i)\n\n", printf(""));
 
 	printf("\n------------- TEST / invalid specifier -------------\n");
-	printf(" (%i)\n",ft_printf("%a", "Coucou")); //--> write nothing & return -1 
+	printf(" (%i)\n\n",ft_printf("%a", "Coucou")); //--> write nothing & return -1 
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%a", "Coucou"));
 
-	printf(" (%i)\n",ft_printf("%s, %a", "Coucou")); // --> write the 1st arg & return -1 
+	printf(" (%i)\n\n",ft_printf("%s, %a", "Coucou")); // --> write the 1st arg & return -1 
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s, %a", "Coucou"));
 
-//	printf("\n-------- TEST / nil arg --------\n");
+	printf("\n-------- TEST / nil arg --------\n");
+	printf(" (%i)\n\n", ft_printf("%c")); // ---> write something & return 0
 //	printf("printf: ");
 //	printf(" (%i)\n", printf("%c")); // ---> "more '%' conversions than data arguments"
-//	printf("ft_printf: ");
-//	printf(" (%i)\n\n",ft_printf("%c")); // ---> write something & return 0
 
-//	printf("\n-------- TEST / bad type arg --------\n");
-//	printf("printf: ");
-//	printf(" (%i)\n", printf("%s", 123));
-//	printf("ft_printf: ");
-//	printf(" (%i)\n\n", ft_printf("%s", 123));
+	printf("\n-------- TEST / arg in unexpected type --------\n");
+	printf("specifier == i <--> input == char\n");
+	printf(" (%i)\n", ft_printf("%i", 'A'));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%i", 'A'));
 
+	printf("specifier == x <--> input == char\n");
+	printf(" (%i)\n", ft_printf("%x", 'A'));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%x", 'A'));
+
+	printf("specifier == u <--> input == char\n");
+	printf(" (%i)\n", ft_printf("%u", 'A'));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("%u", 'A'));
+
+	printf("specifier == c <--> input == char*\n");
+	printf(" (%i)\n\n", ft_printf("%c", "abc")); //---> write something & return 0
 //	printf("printf: ");
-//	printf(" (%i)\n", printf("%i", 'A'));
-//	printf("ft_printf: ");
-//	printf(" (%i)\n\n", ft_printf("%i", 'A'));
+//	printf(" (%i)\n\n", printf("%c", "abc")); // ---> format specifies type 'int' but the argument has type 'char *
+
+//	printf(" specifier == s <--> input == int\n");
+//	printf(" (%i)\n\n", ft_printf("%s", 123)); // ---> 	segmentation fault
+//	printf("printf: ");
+//	printf(" (%i)\n", printf("%s", 123)); // ---> format specifies type 'char *' but the argument has type 'int'
+
+//	printf("specifier == s <--> input == char\n");
+//	printf(" (%i)\n", ft_printf("%s", 'A')); // ---> segmentation fault
+//	printf("printf: ");
+//	printf(" (%i)\n\n", printf("%s", 'A')); // ---> format specifies type 'int' but the argument has type 'char *
 
 	return 0;
 }
