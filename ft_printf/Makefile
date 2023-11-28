@@ -29,10 +29,8 @@ PRINTF_FILES = ft_printf \
 				ft_print_uint \
 				ft_print_hex
 
-LIBFT_FILES = ft_itoa \
-				ft_putchar_fd \
-				ft_putstr_fd \
-				ft_calloc
+LIBFT_FILES = ft_calloc \
+				ft_strchr	
 
 SRCS_LIBFT = $(addprefix $(LIBFT_DIR), $(addsuffix .c, $(LIBFT_FILES)))
 SRCS_PRINTF = $(addprefix $(PRINTF_DIR), $(addsuffix .c, $(PRINTF_FILES)))
