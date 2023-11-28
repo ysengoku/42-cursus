@@ -13,15 +13,15 @@
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
-int    ft_print_nbr(long n)
+int	ft_print_nbr(long n)
 {
-    int     count;
+	int	count;
 
-    if (n < 0)
-      return (write(1, "-", 1) + ft_print_nbr(n * -1));
-    if (n < 10)
-      return (ft_print_char(n + '0'));
-    count = ft_print_nbr(n / 10);
-    count += ft_print_nbr(n % 10);
-    return (count);
+	if (n < 0)
+		return (write(1, "-", 1) + ft_print_nbr(n * -1));
+	if (n < 10)
+		return (ft_print_char(n + '0'));
+	count = ft_print_nbr(n / 10);
+	count += ft_print_nbr(n % 10);
+	return (count);
 }
