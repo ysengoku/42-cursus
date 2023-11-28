@@ -43,9 +43,10 @@ static unsigned int	ft_get_digitcount_hex(unsigned long n)
 
 static int	ft_print_hexlong(unsigned long n, char sp)
 {
-	char			*base;
-	char			*digits;
-	int				digitcount;
+	char	*base;
+	char	*digits;
+	int		digitcount;
+	int		count;
 
 	if (sp == 'x')
 		base = BASE_HEX_LOWER;
@@ -58,5 +59,7 @@ static int	ft_print_hexlong(unsigned long n, char sp)
 		digits[--digitcount] = base[n % 16];
 		n /= 16;
 	}
-	return (ft_print_str(digits));
+	count = ft_print_str(digits);
+	free(digits);
+	return (count);
 }
