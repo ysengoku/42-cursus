@@ -49,8 +49,13 @@ static int	ft_check_specifiers(const char *format)
 	i = 0;
 	while (format[i])
 	{
-		if (format[i] == '%' && !ft_strchr(SPECIFIERS, format[i + 1]))
-			return (0);
+		if (format[i] == '%')
+		{
+			if (format[i + 1] == '%')
+				i++;
+			else if (!ft_strchr(SPECIFIERS, format[i + 1]))
+				return (0);
+		}
 		i++;
 	}
 	return (1);

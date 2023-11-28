@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include "libft.h"
 
-# define SPECIFIERS "cspdiuxX%"
+# define SPECIFIERS "cspdiuxX"
 # define MAX_BIT 32
 # define BASE_HEX_LOWER "0123456789abcdef"
 # define BASE_HEX_UPPER "0123456789ABCDEF"
