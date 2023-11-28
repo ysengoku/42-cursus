@@ -13,6 +13,7 @@
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
+static int	ft_check_specifiers(const char *format);
 static int	ft_print_arg(const char *format, int i, va_list ap);
 
 int	ft_printf(const char *format, ...)
@@ -22,7 +23,7 @@ int	ft_printf(const char *format, ...)
 	int		n;
 	int		i;
 
-	if (!format)
+	if (!format || !ft_check_specifiers(format))
 		return (-1);
 	va_start(ap, format);
 	count = 0;
@@ -41,27 +42,35 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
+static int	ft_check_specifiers(const char *format)
+{
+	size_t	i;
+
+	i = 0;
+	while (format[i])
+	{
+		if (format[i] == '%' && !ft_strchr(SPECIFIERS, format[i + 1]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
-	int	count;
-
-	count = 0;
 	if (format[i + 1] == 'c')
-		count += ft_print_char(va_arg(ap, int));
-	else if (format[i + 1] == 's')
-		count += ft_print_str(va_arg(ap, char *));
-	else if (format[i + 1] == 'p')
-		count += ft_print_ptr(va_arg(ap, void *));
-	else if (format[i + 1] == 'd' || format[i + 1] == 'i')
-		count += ft_print_nbr(va_arg(ap, int));
-	else if (format[i + 1] == 'u')
-		count += ft_print_uint(va_arg(ap, int));
-	else if (format[i + 1] == 'x' || format[i + 1] == 'X')
-		count += ft_print_hex(va_arg(ap, int), format[i + 1]);
-	else if (format[i + 1] == '%')
-		count += write(1, "%", 1);
-	else
-		return (-1);
-	return (count);
+		return (ft_print_char(va_arg(ap, int)));
+	if (format[i + 1] == 's')
+		return (ft_print_str(va_arg(ap, char *)));
+	if (format[i + 1] == 'p')
+		return (ft_print_ptr(va_arg(ap, void *)));
+	if (format[i + 1] == 'd' || format[i + 1] == 'i')
+		return (ft_print_nbr(va_arg(ap, int)));
+	if (format[i + 1] == 'u')
+		return (ft_print_uint(va_arg(ap, int)));
+	if (format[i + 1] == 'x' || format[i + 1] == 'X')
+		return (ft_print_hex(va_arg(ap, int), format[i + 1]));
+	if (format[i + 1] == '%')
+		return (write(1, "%", 1));
+	return (-1);
 }
