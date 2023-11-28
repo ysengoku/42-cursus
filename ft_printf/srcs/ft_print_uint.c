@@ -19,21 +19,24 @@ int	ft_print_uint(int n)
 {
 	unsigned int	nbr;
 	char			*digits;
+	int				len;
 	int				count;
 
 	nbr = (unsigned int)n;
-	count = ft_get_digits_count((long)nbr);
-	digits = (char *)ft_calloc(count + 1, sizeof(char));
+	len = ft_get_digits_count((long)nbr);
+	digits = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!digits)
 		return (-1);
 	if (nbr == 0)
-		digits[--count] = '0';
+		digits[--len] = '0';
 	while (nbr > 0)
 	{
-		digits[--count] = nbr % 10 + '0';
+		digits[--len] = nbr % 10 + '0';
 		nbr /= 10;
 	}
-	return (ft_print_str(digits));
+	count = ft_print_str(digits);
+	free(digits);
+	return (count);
 }
 
 static int	ft_get_digits_count(long n)
