@@ -21,10 +21,7 @@ int	ft_print_str(char *str)
 	count = 0;
 	i = 0;
 	if (!str)
-	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	}
+		return (write(1, "(null)", 6));
 	while (str[i])
 		count += ft_print_char(str[i++]);
 	return (count);
