@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 08:30:53 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 12:10:25 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:45:47 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ int	ft_print_str(char *str)
 	i = 0;
 	if (!str)
 		return (write(1, "(null)", 6));
-	while (str[i])
-		count += ft_print_char(str[i++]);
-	return (count);
+	return (write(1, str, ft_strlen(str)));
 }

@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 16:10:58 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/27 11:36:50 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/29 12:07:41 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ PRINTF_FILES = ft_printf \
 				ft_print_hex
 
 LIBFT_FILES = ft_calloc \
-				ft_strchr	
+				ft_strchr \
+				ft_strlen
 
 SRCS_LIBFT = $(addprefix $(LIBFT_DIR), $(addsuffix .c, $(LIBFT_FILES)))
 SRCS_PRINTF = $(addprefix $(PRINTF_DIR), $(addsuffix .c, $(PRINTF_FILES)))
