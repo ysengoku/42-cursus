@@ -15,6 +15,7 @@
 char *get_next_line(int fd)
 {
 	char	*line;
-	
+
 	return (line);
 }
+// ssize_t read(int fd, void buf[.count], size_t count);
