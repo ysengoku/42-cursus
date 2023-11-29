@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 13:12:10 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/27 11:29:59 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/29 11:11:53 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,13 +68,13 @@ RM	= rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEAD)
+$(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 bonus: all $(OBJS_BONUS)
 	$(AR) $(NAME) $(OBJS_BONUS)
 
-%.o: %.c
+%.o: %.c $(HEAD) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
