@@ -6,11 +6,6 @@
 
 int	main()
 {
-
-	printf("------------- TEST / no type specifier -------------\n");
-	printf(" (%i)\n", ft_printf("hello"));
-	printf("printf: ");
-	printf(" (%i)\n\n", printf("hello"));
 /*
 	printf("\n------------- TEST / c -------------\n");
 	printf(" (%i)\n", ft_printf("%c", 'a'));
@@ -159,6 +154,11 @@ int	main()
 	printf("  -x (%i)\n\n", ft_printf("%x", NULL));
 
 	printf("%lu\n", sizeof(void *));
+
+	printf("------------- TEST / without type specifier -------------\n");
+	printf(" (%i)\n", ft_printf("hello"));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf("hello"));
 /*
 	printf("\n-------- TEST / arg in unexpected type --------\n");
 	printf("specifier == i <--> input == char\n");
