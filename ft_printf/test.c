@@ -6,11 +6,12 @@
 
 int	main()
 {
+
 	printf("------------- TEST / no type specifier -------------\n");
 	printf(" (%i)\n", ft_printf("hello"));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("hello"));
-
+/*
 	printf("\n------------- TEST / c -------------\n");
 	printf(" (%i)\n", ft_printf("%c", 'a'));
 	printf("printf: ");
@@ -21,52 +22,14 @@ int	main()
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%s", "hello"));
 
-	const char	*testLongText = "Lorem ipsum dolor sit amet, consectetur \
-	adipiscing elit. Nullam lorem eros, ornare nec aliquam quis, semper eget dolor. \
-	Suspendisse sagittis, ligula nec placerat luctus, eros sem laoreet augue, quis \
-	fringilla leo sem eu quam. Vivamus hendrerit purus tortor, sed pulvinar tortor \
-	commodo quis. In egestas et lorem nec malesuada. Ut efficitur ex nec eros mattis \
-	vulputate. Morbi elit libero, mattis vel pulvinar ac, aliquam ac dolor. \
-	Fusce quis justo at sem vehicula volutpat. Nullam sollicitudin blandit turpis. \
-	Vivamus quis mollis orci. Fusce non purus posuere, placerat tortor sed, efficitur \
-	felis. Aenean vehicula pharetra urna non rhoncus. Duis in arcu libero. Ut vitae \
-	ipsum sit amet ligula dapibus tincidunt. Nullam diam mauris, condimentum eget dui \
-	eu, congue varius leo. Nam blandit venenatis est, a euismod ex convallis sed. \
-	Curabitur id ipsum sollicitudin erat rutrum consequat. Nam cursus dui eu tortor \
-	dapibus fermentum. Vestibulum blandit nibh sed leo varius vulputate. \n \
-	Nulla elementum quis justo a malesuada. Donec elementum elit nec rutrum \
-	vestibulum. Duis bibendum magna vitae ante tempor semper. Suspendisse mattis at \
-	mi non eleifend. Donec ultricies odio dui, eget elementum nunc fermentum non. \
-	Sed id dui ut justo porta finibus ut vitae magna. Mauris malesuada ante at nisi \
-	semper vehicula. Quisque nec orci tincidunt augue venenatis aliquet sed eget risus. \
-	Donec facilisis porttitor lectus et porta. Vestibulum ante ipsum primis in \
-	faucibus orci luctus et ultrices posuere cubilia curae; Etiam non molestie felis, \
-	in ullamcorper sem. Nunc sed sodales dui. Proin lectus massa, varius at mi non, \
-	pulvinar rhoncus urna. Praesent egestas vel tellus sed aliquam. \n Vestibulum eu \
-	commodo velit. Vivamus pulvinar ex a nisi rhoncus, et scelerisque augue blandit. \
-	Duis eget commodo lorem. Cras massa ipsum, dapibus sit amet euismod id, commodo \
-	eu erat. Mauris lobortis vel mi a tempor. Praesent ornare mauris ligula, sit amet \
-	tempus tortor bibendum rhoncus. Sed sed sollicitudin nibh. Pellentesque habitant \
-	morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed sit \
-	amet turpis suscipit, consectetur ante vel, elementum neque. Donec hendrerit est \
-	ut urna rhoncus porttitor. Ut est risus, hendrerit id nunc eu, sodales vehicula \
-	lorem. Etiam dui ex, sodales quis justo sit amet, semper feugiat tellus. \n \
-	Aliquam luctus faucibus dictum. Vivamus finibus erat dui, in maximus justo \
-	pretium at. Nullam sed lectus enim. Fusce eget purus in sapien vestibulum \
-	pulvinar sit amet non metus. Integer quis dolor orci. Etiam lectus mi, sagittis \
-	nec lorem ut, efficitur vulputate enim. Donec maximus quam vel est fringilla \
-	malesuada eget at turpis. Pellentesque tincidunt erat id mollis tempus. Maecenas \
-	dignissim risus varius leo rutrum, at bibendum nisi vulputate. Proin sem tortor, \
-	convallis eu scelerisque non, sodales vitae quam. Duis est risus, scelerisque at \
-	urna vitae, porttitor hendrerit ex. \n Interdum et malesuada fames ac ante \
-	ipsum primis in faucibus. Pellentesque auctor rhoncus dapibus. Quisque viverra \
-	id diam eget condimentum. Mauris sit amet tempor velit, eget mattis ex. Aenean \
-	arcu nunc, ornare quis commodo nec, pretium quis diam. Nam sed libero nec dolor \
-	rhoncus accumsan. Suspendisse sapien eros, viverra et sapien quis, semper \
-	venenatis ex. In ut nisi ex. Orci varius natoque penatibus et magnis dis."; 
+	int	size = 10000;
+	char *testLongText = malloc(size * sizeof(char));
+	ft_memset(testLongText, 'a', size * sizeof(char));
+	testLongText[size * sizeof(char) - 1] = '\0';
 	printf(" (%i)\n", ft_printf("%s", testLongText));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%s", testLongText));
+	free(testLongText);
 	
 	printf(" (%i)\n", ft_printf(" NULL %s NULL ", (char *)NULL));
 	printf("printf: ");
@@ -168,19 +131,35 @@ int	main()
 	printf(" (%i)\n\n", printf(""));
 
 	printf("\n------------- TEST / invalid specifier -------------\n");
-	printf(" (%i)\n\n",ft_printf("%a", "Coucou")); //--> write nothing & return -1 
+	printf(" (%i)\n\n",ft_printf("%a", "Coucou"));
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%a", "Coucou"));
 
-	printf(" (%i)\n\n",ft_printf("%s, %a", "Coucou")); // --> write the 1st arg & return -1 
+	printf(" (%i)\n\n",ft_printf("%s, %a", "Coucou"));
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s, %a", "Coucou"));
+*/
 
-	printf("\n-------- TEST / nil arg --------\n");
-	printf(" (%i)\n\n", ft_printf("%c")); // ---> write something & return 0
+//	printf("\n-------- TEST / nil arg --------\n");
+// nil arg == null pointer ?
+	printf("  -s (%i)\n\n", ft_printf("%s")); 
+	printf("  -c (%i)\n\n", ft_printf("%c")); // ---> write something & return 1
 //	printf("printf: ");
 //	printf(" (%i)\n", printf("%c")); // ---> "more '%' conversions than data arguments"
+	printf("  -i (%i)\n\n", ft_printf("%i"));
+	printf("  -u (%i)\n\n", ft_printf("%u"));
+	printf("  -p (%i)\n\n", ft_printf("%p"));
+	printf("  -x (%i)\n\n", ft_printf("%x"));
 
+	printf("  -c (%i)\n\n", ft_printf("%c", NULL));
+	printf("  -s (%i)\n\n", ft_printf("%s", NULL)); 
+	printf("  -i (%i)\n\n", ft_printf("%i", NULL));
+	printf("  -u (%i)\n\n", ft_printf("%u", NULL));
+	printf("  -p (%i)\n\n", ft_printf("%p", NULL));
+	printf("  -x (%i)\n\n", ft_printf("%x", NULL));
+
+	printf("%lu\n", sizeof(void *));
+/*
 	printf("\n-------- TEST / arg in unexpected type --------\n");
 	printf("specifier == i <--> input == char\n");
 	printf(" (%i)\n", ft_printf("%i", 'A'));
@@ -198,7 +177,7 @@ int	main()
 	printf(" (%i)\n\n", printf("%u", 'A'));
 
 	printf("specifier == c <--> input == char*\n");
-	printf(" (%i)\n\n", ft_printf("%c", "abc")); //---> write something & return 0
+	printf(" (%i)\n\n", ft_printf("%c", "abc")); //---> write something & return 1
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%c", "abc")); // ---> format specifies type 'int' but the argument has type 'char *
 
@@ -211,6 +190,6 @@ int	main()
 //	printf(" (%i)\n", ft_printf("%s", 'A')); // ---> segmentation fault
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s", 'A')); // ---> format specifies type 'int' but the argument has type 'char *
-
+*/
 	return 0;
 }
