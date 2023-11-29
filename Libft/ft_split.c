@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:50:03 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/17 13:03:56 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:00:30 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	wordcount = ft_get_wordcount(s, c);
-	arr = (char **)malloc((wordcount + 1) * sizeof(char *));
+	arr = malloc((wordcount + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
 	return (ft_cpy_words(s, c, wordcount, arr));

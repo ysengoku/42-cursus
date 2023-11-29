@@ -6,30 +6,41 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:26:41 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/21 13:05:22 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:49:23 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(const char c)
+static int	ft_skip_spaces(const char *nptr)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (nptr[i] == ' ' || nptr[i] == '	')
+		i++;
+	return (i);
+} 
+static int	ft_check_overflow(long nbr, int sign, int i, const char *nptr)
+{
+	if (nbr > LONG_MAX / 10 || (nbr == LONG_MAX / 10 && nptr[i] - '0' > 7))
+	{
+		if (sign == -1)
+			return (0);
+		return (-1);
+	}
+	return (1);
 }
 
 int	ft_atoi(const char *nptr)
 {
-	int			i;
-	int			sign;
-	long long	nbr;
+	int		i;
+	int		sign;
+	long	nbr;
 
-	i = 0;
+	i = ft_skip_spaces(nptr);
 	sign = 1;
 	nbr = 0;
-	while (ft_isspace(nptr[i]))
-		i++;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
@@ -41,7 +52,9 @@ int	ft_atoi(const char *nptr)
 		nbr += (nptr[i] - '0');
 		if (ft_isdigit(nptr[i + 1]))
 			nbr *= 10;
-		if (nbr / 10 > INT_MAX)
+		if (ft_check_overflow(nbr, sign, i, nptr) == 0)
+			return (0);
+		else if (ft_check_overflow(nbr, sign, i, nptr) == -1)
 			return (-1);
 		i++;
 	}
