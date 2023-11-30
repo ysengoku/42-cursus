@@ -159,6 +159,11 @@ int	main()
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("hello"));
 
+	printf("------------- TEST / empty format -------------\n");
+	printf(" (%i)\n", ft_printf(""));
+	printf("printf: ");
+	printf(" (%i)\n\n", printf(""));
+
 	printf("\n-------- TEST / arg in unexpected type --------\n");
 	printf("specifier == i <--> input == char\n");
 	printf(" (%i)\n", ft_printf("%i", 'A'));
@@ -180,8 +185,8 @@ int	main()
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%c", "abc")); // ---> format specifies type 'int' but the argument has type 'char *
 
-//	printf(" specifier == s <--> input == int\n");
-//	printf(" (%i)\n\n", ft_printf("%s", 123)); // ---> 	segmentation fault
+	printf(" specifier == s <--> input == int\n");
+	printf(" (%i)\n\n", ft_printf("%s", 123)); // ---> 	segmentation fault
 //	printf("printf: ");
 //	printf(" (%i)\n", printf("%s", 123)); // ---> format specifies type 'char *' but the argument has type 'int'
 
