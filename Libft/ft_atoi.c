@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:26:41 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/29 10:49:23 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:47:02 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_skip_spaces(const char *nptr)
 	int	i;
 
 	i = 0;
-	while (nptr[i] == ' ' || nptr[i] == '	')
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
 	return (i);
 } 

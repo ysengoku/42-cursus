@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/30 10:58:55 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:21:32 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,64 +80,3 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 	return (-1);
 }
 
-/*
-#include <stdio.h>
-#include <stdarg.h>
-
-static int    ft_check_arg(va_list ap)
-{
-    va_list ap_copy;
-    
-    va_copy(ap_copy, ap);
-    if (va_arg(ap_copy, void *) == (void *)NULL)
-        return(0);
-    return (1);
-}
-
-int    ft_print_char(char c)
-{
-    return (write(1, &c, 1));
-}
-
-static int    ft_print_arg(const char *format, int i, va_list ap)
-{
-    if (format[i + 1] == 'c')
-        return (ft_print_char(va_arg(ap, int)));
-    return(-1);
-}
-        
-int    ft_printf(const char *format, ...)
-{
-    va_list    ap;
-    int        count;
-    int        n;
-    int        i;
-
-    va_start(ap, format);
-    if (!ft_check_arg(ap))
-        return (-1);
-    count = 0;
-    i = 0;
-    while (format[i] != '\0')
-    {
-        if (format[i] != '%')
-            n = (int)write(1, &format[i], 1);
-        else if (format[i] == '%')
-            n = ft_print_arg(format, i++, ap);
-        if (n < 0)
-            return (-1);
-        count += n;
-        i++;
-    }
-    va_end(ap);
-    return (count);
-}
-
-int main() {
-  //  printf("  -c (%i)\n\n", ft_printf("%c", 'A'));
-    printf("  -c (%i)\n\n", ft_printf("%c"));
-    printf("  -c (%i)\n\n", ft_printf("%c"), NULL);
-
-  return 0;
-}
-*/
