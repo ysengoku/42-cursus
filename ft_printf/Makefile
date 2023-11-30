@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 16:10:58 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/30 09:24:21 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/30 11:09:42 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ AR = ar rcs
 RM = rm
 
 PRINTF_DIR = srcs/
-LIBFT_DIR = srcs/Libft/
+LIBFT_DIR = srcs/libft/
 OBJS_DIR = .objs/
 
 PRINTF_FILES = ft_printf \
