@@ -1,11 +1,16 @@
-// cc -Wall -Wextra -Werror  -I/includes test.c includes/ft_printf.h includes/libft.h srcs/*.c srcs/Libft/*.c
-
+// cc -Wall -Wextra -Werror  -I/includes test.c includes/ft_printf.h srcs/*.c
+// gcc test.c -L. -lftprintf -o (filename)  
 #include "includes/ft_printf.h"
-#include "includes/libft.h"
 #include <stdio.h>
+
+static void	*ft_memset(void *s, int c, size_t n);
 
 int	main()
 {
+	setvbuf(stdout, NULL, _IONBF, 0);
+	printf("PRINTF : %i\n", printf("abcde%"));
+	printf("YOURS : %i\n", ft_printf("abcde%"));
+
 	printf("\n------------- TEST / c -------------\n");
 	printf(" (%i)\n", ft_printf("%c", 'a'));
 	printf("printf: ");
@@ -61,10 +66,6 @@ int	main()
 	printf(" (%i)\n", ft_printf("%d", 'a'));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%d", 'a'));
-
-//	printf(" (%i)\n", ft_printf("%d", "abc")); //--> print something & return its length 
-//	printf("printf: ");
-//	printf(" (%i)\n\n", printf("%d", "abc")); //--> format specifies type != argument type
 
 //	printf(" (%i)\n", ft_printf("%d", -2147483648));
 //	printf("printf: ");
@@ -133,27 +134,6 @@ int	main()
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s, %a", "Coucou"));
 
-/*
-//	printf("\n-------- TEST / nil arg --------\n");
-// nil arg == null pointer ?
-	printf("  -s (%i)\n\n", ft_printf("%s")); 
-	printf("  -c (%i)\n\n", ft_printf("%c")); // ---> write something & return 1
-//	printf("printf: ");
-//	printf(" (%i)\n", printf("%c")); // ---> "more '%' conversions than data arguments"
-	printf("  -i (%i)\n\n", ft_printf("%i"));
-	printf("  -u (%i)\n\n", ft_printf("%u"));
-	printf("  -p (%i)\n\n", ft_printf("%p"));
-	printf("  -x (%i)\n\n", ft_printf("%x"));
-
-	printf("  -c (%i)\n\n", ft_printf("%c", NULL));
-	printf("  -s (%i)\n\n", ft_printf("%s", NULL)); 
-	printf("  -i (%i)\n\n", ft_printf("%i", NULL));
-	printf("  -u (%i)\n\n", ft_printf("%u", NULL));
-	printf("  -p (%i)\n\n", ft_printf("%p", NULL));
-	printf("  -x (%i)\n\n", ft_printf("%x", NULL));
-
-	printf("%lu\n", sizeof(void *));
-*/
 	printf("------------- TEST / without type specifier -------------\n");
 	printf(" (%i)\n", ft_printf("hello"));
 	printf("printf: ");
@@ -180,13 +160,13 @@ int	main()
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%u", 'A'));
 
-	printf("specifier == c <--> input == char*\n");
-	printf(" (%i)\n\n", ft_printf("%c", "abc")); //---> write something & return 1
+//	printf("specifier == c <--> input == char*\n");
+//	printf(" (%i)\n\n", ft_printf("%c", "abc")); //---> write something & return 1
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%c", "abc")); // ---> format specifies type 'int' but the argument has type 'char *
 
-	printf(" specifier == s <--> input == int\n");
-	printf(" (%i)\n\n", ft_printf("%s", 123)); // ---> 	segmentation fault
+//	printf(" specifier == s <--> input == int\n");
+//	printf(" (%i)\n\n", ft_printf("%s", 123)); // ---> 	segmentation fault
 //	printf("printf: ");
 //	printf(" (%i)\n", printf("%s", 123)); // ---> format specifies type 'char *' but the argument has type 'int'
 
@@ -195,5 +175,38 @@ int	main()
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s", 'A')); // ---> format specifies type 'int' but the argument has type 'char *
 
+/*
+//	printf("\n-------- TEST / nil arg --------\n");
+	printf("  -s (%i)\n\n", ft_printf("%s")); 
+	printf("  -c (%i)\n\n", ft_printf("%c")); // ---> write something & return 1
+//	printf("printf: ");
+//	printf(" (%i)\n", printf("%c")); // ---> "more '%' conversions than data arguments"
+	printf("  -i (%i)\n\n", ft_printf("%i"));
+	printf("  -u (%i)\n\n", ft_printf("%u"));
+	printf("  -p (%i)\n\n", ft_printf("%p"));
+	printf("  -x (%i)\n\n", ft_printf("%x"));
+
+	printf("  -c (%i)\n\n", ft_printf("%c", NULL));
+	printf("  -s (%i)\n\n", ft_printf("%s", NULL)); 
+	printf("  -i (%i)\n\n", ft_printf("%i", NULL));
+	printf("  -u (%i)\n\n", ft_printf("%u", NULL));
+	printf("  -p (%i)\n\n", ft_printf("%p", NULL));
+	printf("  -x (%i)\n\n", ft_printf("%x", NULL));
+
+	printf("%lu\n", sizeof(void *));
+*/
 	return 0;
+}
+
+static void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)s)[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }
