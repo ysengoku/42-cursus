@@ -6,13 +6,12 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/30 09:29:41 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:24:04 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-//static int	ft_check_arg(va_list ap);
 static int	ft_check_specifiers(const char *format);
 static int	ft_print_arg(const char *format, int i, va_list ap);
 
@@ -26,8 +25,6 @@ int	ft_printf(const char *format, ...)
 	if (!format || !ft_check_specifiers(format))
 		return (-1);
 	va_start(ap, format);
-//	if (!ft_check_arg(ap))
-//		return (-1);
 	count = 0;
 	i = 0;
 	while (format[i] != '\0')
@@ -44,17 +41,6 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
-/*
-static int	ft_check_arg(va_list ap)
-{
-	va_list ap_copy;
-	
-	va_copy(ap_copy, ap);
-	if (va_arg(ap_copy, void *) == (void *)NULL) // This code doesn't check if arg exists or not, but if the first arg == zero (= null)
-		return(0);
-	return (1);
-}
-*/
 
 static int	ft_check_specifiers(const char *format)
 {
@@ -75,11 +61,33 @@ static int	ft_check_specifiers(const char *format)
 	return (1);
 }
 
+/*
+static int	ft_check_sizeofarg(va_list ap)
+{
+	va_list ap_copy;
+	
+	va_copy(ap_copy, ap);
+	if (sizeof(va_arg(ap_copy, char *)) == sizeof(char *)) 
+	{
+		va_end(ap_copy);
+		return(1);
+	}
+	va_end(ap_copy);
+	return (0);
+}
+*/
+
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
 	if (format[i + 1] == 'c')
 		return (ft_print_char(va_arg(ap, int)));
 	if (format[i + 1] == 's')
+// check if sizeof va_arg == 8 (sizeof char *)
+//		if (!ft_check_sizeofarg(ap))
+//		{
+//			va_end(ap);
+//			return (-1);
+//		}
 		return (ft_print_str(va_arg(ap, char *)));
 	if (format[i + 1] == 'p')
 		return (ft_print_ptr(va_arg(ap, void *)));
