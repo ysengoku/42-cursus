@@ -16,12 +16,18 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+/*
 typedef struct s_list
 {
 	char			*content;
 	struct s_list	*next;
 }					t_list;
+*/
 
-char *get_next_line(int fd);
+char 	*get_next_line(int fd);
+
+char	*ft_strchr(const char *s, char c);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
