@@ -1,11 +1,15 @@
 #include "get_next_line.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 int	main()
 {
 	int	fd;
 
-	fd = open("filenamr.txt", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
+//	while ()
+//	printf("%s\n", get_next_line(fd));
+	close(fd);
 	return 0;
 }
 
