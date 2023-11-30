@@ -6,14 +6,13 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/29 15:40:52 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:29:41 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../includes/libft.h"
 
-static int	ft_check_arg(va_list ap);
+//static int	ft_check_arg(va_list ap);
 static int	ft_check_specifiers(const char *format);
 static int	ft_print_arg(const char *format, int i, va_list ap);
 
@@ -45,7 +44,7 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
-
+/*
 static int	ft_check_arg(va_list ap)
 {
 	va_list ap_copy;
@@ -55,6 +54,7 @@ static int	ft_check_arg(va_list ap)
 		return(0);
 	return (1);
 }
+*/
 
 static int	ft_check_specifiers(const char *format)
 {
