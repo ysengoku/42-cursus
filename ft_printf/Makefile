@@ -6,7 +6,7 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 16:10:58 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/29 12:07:41 by yusengok         ###   ########.fr        #
+#    Updated: 2023/11/30 09:24:21 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,9 @@ PRINTF_FILES = ft_printf \
 				ft_print_uint \
 				ft_print_hex
 
-LIBFT_FILES = ft_calloc \
-				ft_strchr \
-				ft_strlen
+#LIBFT_FILES = ft_calloc \
+#				ft_strchr \
+#				ft_strlen
 
 SRCS_LIBFT = $(addprefix $(LIBFT_DIR), $(addsuffix .c, $(LIBFT_FILES)))
 SRCS_PRINTF = $(addprefix $(PRINTF_DIR), $(addsuffix .c, $(PRINTF_FILES)))
@@ -43,8 +43,17 @@ OBJF = .cache_exists
 
 all: $(NAME)
 
-$(NAME): $(OBJS_LIBFT) $(OBJS_PRINTF)
-	$(AR) $(NAME) $(OBJS_LIBFT) $(OBJS_PRINTF)
+#$(NAME): $(OBJS_LIBFT) $(OBJS_PRINTF)
+#	$(AR) $(NAME) $(OBJS_LIBFT) $(OBJS_PRINTF)
+
+$(NAME): $(OBJS_PRINTF)
+	@make -C $(LIBFT_DIR)
+	@cp $(LIBFT_DIR)/libft.a libft.a
+	@mv libft.a $(NAME)
+	$(AR) $(NAME) $(OBJS_PRINTF)
+	
+# make -C $(LIBFT_DIR) ===> move to $(LIBFT_DIR), then make
+# cp(= copy) from to
 
 $(OBJS_DIR)%.o: $(LIBFT_DIR)%.c | $(OBJF)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -57,9 +66,11 @@ $(OBJF):
 
 clean:
 	$(RM) -rf $(OBJS_DIR)
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	$(RM) -f $(NAME)
+	$(RM) -f $(LIBFT_DIR)/libft.a
 
 re: fclean $(NAME)
 
