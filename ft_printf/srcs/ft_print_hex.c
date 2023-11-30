@@ -6,12 +6,11 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 10:42:57 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:29:18 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../includes/libft.h"
 
 int	ft_print_hex(int n, char sp)
 {

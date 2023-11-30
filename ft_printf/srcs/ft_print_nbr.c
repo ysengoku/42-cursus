@@ -6,12 +6,11 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 08:53:29 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 09:24:01 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:29:20 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../includes/libft.h"
 
 int	ft_print_nbr(long n)
 {

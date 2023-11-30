@@ -6,12 +6,11 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:28:26 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 09:27:55 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:29:25 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../includes/libft.h"
 
 static unsigned int	ft_get_digitcount_hex(unsigned long n);
 static int			ft_print_hexlong(unsigned long n, char sp);

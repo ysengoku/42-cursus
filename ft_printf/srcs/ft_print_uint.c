@@ -6,12 +6,11 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 08:52:58 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/27 09:31:00 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:29:36 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../includes/libft.h"
 
 static int	ft_get_digits_count(long n);
 

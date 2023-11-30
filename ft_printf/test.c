@@ -6,7 +6,6 @@
 
 int	main()
 {
-/*
 	printf("\n------------- TEST / c -------------\n");
 	printf(" (%i)\n", ft_printf("%c", 'a'));
 	printf("printf: ");
@@ -133,8 +132,8 @@ int	main()
 	printf(" (%i)\n\n",ft_printf("%s, %a", "Coucou"));
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s, %a", "Coucou"));
-*/
 
+/*
 //	printf("\n-------- TEST / nil arg --------\n");
 // nil arg == null pointer ?
 	printf("  -s (%i)\n\n", ft_printf("%s")); 
@@ -154,12 +153,12 @@ int	main()
 	printf("  -x (%i)\n\n", ft_printf("%x", NULL));
 
 	printf("%lu\n", sizeof(void *));
-
+*/
 	printf("------------- TEST / without type specifier -------------\n");
 	printf(" (%i)\n", ft_printf("hello"));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("hello"));
-/*
+
 	printf("\n-------- TEST / arg in unexpected type --------\n");
 	printf("specifier == i <--> input == char\n");
 	printf(" (%i)\n", ft_printf("%i", 'A'));
@@ -190,6 +189,6 @@ int	main()
 //	printf(" (%i)\n", ft_printf("%s", 'A')); // ---> segmentation fault
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s", 'A')); // ---> format specifies type 'int' but the argument has type 'char *
-*/
+
 	return 0;
 }
