@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/30 10:24:04 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:58:55 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,33 +61,11 @@ static int	ft_check_specifiers(const char *format)
 	return (1);
 }
 
-/*
-static int	ft_check_sizeofarg(va_list ap)
-{
-	va_list ap_copy;
-	
-	va_copy(ap_copy, ap);
-	if (sizeof(va_arg(ap_copy, char *)) == sizeof(char *)) 
-	{
-		va_end(ap_copy);
-		return(1);
-	}
-	va_end(ap_copy);
-	return (0);
-}
-*/
-
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
 	if (format[i + 1] == 'c')
 		return (ft_print_char(va_arg(ap, int)));
 	if (format[i + 1] == 's')
-// check if sizeof va_arg == 8 (sizeof char *)
-//		if (!ft_check_sizeofarg(ap))
-//		{
-//			va_end(ap);
-//			return (-1);
-//		}
 		return (ft_print_str(va_arg(ap, char *)));
 	if (format[i + 1] == 'p')
 		return (ft_print_ptr(va_arg(ap, void *)));
