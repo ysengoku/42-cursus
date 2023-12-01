@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:34:50 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/30 09:29:18 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:30:32 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	ft_print_hex(int n, char sp)
 	if (nbr < 16)
 		return (ft_print_char(base[nbr]));
 	count = ft_print_hex(nbr / 16, sp);
-	return (count + ft_print_hex(nbr % 16, sp));
+	count += ft_print_hex(nbr % 16, sp);
+	return (count);
 }

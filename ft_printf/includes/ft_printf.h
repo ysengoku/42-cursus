@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 08:34:37 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/30 13:20:23 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:37:18 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <limits.h>
 
 # define SPECIFIERS "cspdiuxX"
-# define MAX_BIT 32
 # define BASE_HEX_LOWER "0123456789abcdef"
 # define BASE_HEX_UPPER "0123456789ABCDEF"
 
