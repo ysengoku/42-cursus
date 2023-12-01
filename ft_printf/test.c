@@ -8,8 +8,8 @@ static void	*ft_memset(void *s, int c, size_t n);
 int	main()
 {
 	setvbuf(stdout, NULL, _IONBF, 0);
-	printf("PRINTF : %i\n", printf("abcde%"));
-	printf("YOURS : %i\n", ft_printf("abcde%"));
+//	printf("PRINTF : %i\n", printf("abcde%"));
+//	printf("YOURS : %i\n", ft_printf("abcde%"));
 
 	printf("\n------------- TEST / c -------------\n");
 	printf(" (%i)\n", ft_printf("%c", 'a'));
@@ -66,10 +66,6 @@ int	main()
 	printf(" (%i)\n", ft_printf("%d", 'a'));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf("%d", 'a'));
-
-//	printf(" (%i)\n", ft_printf("%d", -2147483648));
-//	printf("printf: ");
-//	printf(" (%i)\n\n", printf("%d", -2147483648)); //--> Original printf can't handle INT_MIN
 
 	printf("\n------------- TEST / u -------------\n");
 	printf(" (%i)\n", ft_printf("%u", 42));
@@ -175,26 +171,6 @@ int	main()
 //	printf("printf: ");
 //	printf(" (%i)\n\n", printf("%s", 'A')); // ---> format specifies type 'int' but the argument has type 'char *
 
-/*
-//	printf("\n-------- TEST / nil arg --------\n");
-	printf("  -s (%i)\n\n", ft_printf("%s")); 
-	printf("  -c (%i)\n\n", ft_printf("%c")); // ---> write something & return 1
-//	printf("printf: ");
-//	printf(" (%i)\n", printf("%c")); // ---> "more '%' conversions than data arguments"
-	printf("  -i (%i)\n\n", ft_printf("%i"));
-	printf("  -u (%i)\n\n", ft_printf("%u"));
-	printf("  -p (%i)\n\n", ft_printf("%p"));
-	printf("  -x (%i)\n\n", ft_printf("%x"));
-
-	printf("  -c (%i)\n\n", ft_printf("%c", NULL));
-	printf("  -s (%i)\n\n", ft_printf("%s", NULL)); 
-	printf("  -i (%i)\n\n", ft_printf("%i", NULL));
-	printf("  -u (%i)\n\n", ft_printf("%u", NULL));
-	printf("  -p (%i)\n\n", ft_printf("%p", NULL));
-	printf("  -x (%i)\n\n", ft_printf("%x", NULL));
-
-	printf("%lu\n", sizeof(void *));
-*/
 	return 0;
 }
 
