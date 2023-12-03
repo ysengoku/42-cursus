@@ -43,7 +43,6 @@ SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
 OBJF = .cache_exists
-# Check if the cache exists
 
 all: $(NAME)
 
