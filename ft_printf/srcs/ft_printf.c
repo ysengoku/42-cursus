@@ -56,19 +56,18 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	count = 0;
 	i = 0;
-	while (format[i] != '\0')
+	while (format[i++] != '\0')
 	{
-		if (format[i] != '%')
-			count += (int)write(1, &format[i], 1);
-		else if (format[i] == '%')
+		if (format[i - 1] != '%')
+			count += (int)write(1, &format[i - 1], 1);
+		else if (format[i - 1] == '%')
 			count += ft_print_arg(format, i++, ap);
-//		if (n < 0)
-//		{
-//			va_end(ap);
-//			return (-1);
-//		}
-//		count += n;
-		i++;
+		if (n < 0)
+		{
+			va_end(ap);
+			return (-1);
+			}
+		count += n;
 	}
 	va_end(ap);
 	return (count);
@@ -93,7 +92,7 @@ static int	ft_check_specifiers(const char *format)
 	return (1);
 }
 
-
+/*
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
 	if (format[i + 1] == 'c')
@@ -112,8 +111,8 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 		return (write(1, "%", 1));
 	return (-1);
 }
+*/
 
-/*
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
 	if (format[i] == 'c')
@@ -127,9 +126,8 @@ static int	ft_print_arg(const char *format, int i, va_list ap)
 	if (format[i] == 'u')
 		return (ft_print_uint(va_arg(ap, int)));
 	if (format[i] == 'x' || format[i] == 'X')
-		return (ft_print_hex(va_arg(ap, int), format[i + 1]));
+		return (ft_print_hex(va_arg(ap, int), format[i]));
 	if (format[i] == '%')
 		return (write(1, "%", 1));
 	return (-1);
 }
-*/
