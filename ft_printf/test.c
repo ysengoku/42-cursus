@@ -8,8 +8,8 @@ static void	*ft_memset(void *s, int c, size_t n);
 int	main()
 {
 	setvbuf(stdout, NULL, _IONBF, 0);
-//	printf("PRINTF : %i\n", printf("abcde%"));
-//	printf("YOURS : %i\n", ft_printf("abcde%"));
+	printf("PRINTF : %i\n", printf("abcde%"));
+	printf("YOURS : %i\n", ft_printf("abcde%"));
 
 	printf("\n------------- TEST / c -------------\n");
 	printf(" (%i)\n", ft_printf("%c", 'a'));
@@ -120,6 +120,11 @@ int	main()
 	printf(" (%i)\n",ft_printf(""));
 	printf("printf: ");
 	printf(" (%i)\n\n", printf(""));
+
+	printf("\n------------- TEST / spaces between percent and specifier -------------\n");
+	printf(" (%i)\n\n",ft_printf("%   s", "Coucou"));
+//	printf("printf: ");
+//	printf(" (%i)\n\n", printf("%   s", "Coucou"));
 
 	printf("\n------------- TEST / invalid specifier -------------\n");
 	printf(" (%i)\n\n",ft_printf("%a", "Coucou"));
