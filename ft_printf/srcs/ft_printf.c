@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:47:32 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/30 13:21:32 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/04 08:09:06 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	ft_check_specifiers(const char *format);
 static int	ft_print_arg(const char *format, int i, va_list ap);
 
-/*
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
@@ -28,45 +27,17 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	count = 0;
 	i = 0;
-	while (format[i] != '\0')
-	{
-		if (format[i] != '%')
-			n = (int)write(1, &format[i], 1);
-		else if (format[i] == '%')
-			n = ft_print_arg(format, i++, ap);
-		if (n < 0)
-			return (-1);
-		count += n;
-		i++;
-	}
-	va_end(ap);
-	return (count);
-}
-*/
-
-int	ft_printf(const char *format, ...)
-{
-	va_list	ap;
-	int		count;
-//	int		n;
-	int		i;
-
-	if (!format || !ft_check_specifiers(format))
-		return (-1);
-	va_start(ap, format);
-	count = 0;
-	i = 0;
 	while (format[i++] != '\0')
 	{
 		if (format[i - 1] != '%')
-			count += (int)write(1, &format[i - 1], 1);
+			n = (int)write(1, &format[i - 1], 1);
 		else if (format[i - 1] == '%')
-			count += ft_print_arg(format, i++, ap);
+			n = ft_print_arg(format, i++, ap);
 		if (n < 0)
 		{
 			va_end(ap);
 			return (-1);
-			}
+		}
 		count += n;
 	}
 	va_end(ap);
@@ -91,27 +62,6 @@ static int	ft_check_specifiers(const char *format)
 	}
 	return (1);
 }
-
-/*
-static int	ft_print_arg(const char *format, int i, va_list ap)
-{
-	if (format[i + 1] == 'c')
-		return (ft_print_char(va_arg(ap, int)));
-	if (format[i + 1] == 's')
-		return (ft_print_str(va_arg(ap, char *)));
-	if (format[i + 1] == 'p')
-		return (ft_print_ptr(va_arg(ap, void *)));
-	if (format[i + 1] == 'd' || format[i + 1] == 'i')
-		return (ft_print_nbr(va_arg(ap, int)));
-	if (format[i + 1] == 'u')
-		return (ft_print_uint(va_arg(ap, int)));
-	if (format[i + 1] == 'x' || format[i + 1] == 'X')
-		return (ft_print_hex(va_arg(ap, int), format[i + 1]));
-	if (format[i + 1] == '%')
-		return (write(1, "%", 1));
-	return (-1);
-}
-*/
 
 static int	ft_print_arg(const char *format, int i, va_list ap)
 {
