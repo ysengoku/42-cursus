@@ -14,7 +14,8 @@
 
 char *get_next_line(int fd)
 {
-	static char	*line;
+	static char	*tmp;
+	char		*line;
 	char		*buf;
 
 	return (line);
