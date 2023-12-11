@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:33 by yusengok          #+#    #+#             */
-/*   Updated: 2023/11/28 15:03:05 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:41:46 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef BUFSIZE
-#  define BUFSIZE = 8
-# endif
+# define BUFSIZE 1
+
 /*
 typedef struct s_list
 {
@@ -29,8 +28,10 @@ typedef struct s_list
 
 char 	*get_next_line(int fd);
 
-char	*ft_strchr(const char *s, char c);
 size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s);
 
 #endif
