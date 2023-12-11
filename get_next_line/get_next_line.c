@@ -28,6 +28,7 @@ char *get_next_line(int fd)
 	line = ft_store_buf(fd, stash);
 // ------ extract the part before \n & store the rest in stash ----------
 	stash = ft_set_line(line);
+	printf("%s\n", stash); //////// There is an issue with stash...
 	return(line);
 }
 
