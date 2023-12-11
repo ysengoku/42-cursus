@@ -4,14 +4,20 @@
 
 int	main()
 {
-	int	fd;
+	int		fd;
+	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-//	while ()
-	printf("%s\n", get_next_line(fd));
-
+//	while (1)
+//	{
+	line = get_next_line(fd);
+//	if (line == NULL)
+//		break ;
+//	}
+	printf("%s\n", line);
+	free(line);
 	close(fd);
-	return 0;
+	return(0);
 }
 
 // int open (const char* path, int flags [, int mode ]);
