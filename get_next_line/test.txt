@@ -1,5 +1,4 @@
-Lorem ipsum d
-olor sit amet, consectetur adipiscing elit. Donec fermentum
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum
 ut nunc vitae vulputate.
 Nam erat felis, rutrum nec odio ut, euismod mattis velit.
 Vestibulum odio nulla, laoreet sed lacus nec, feugiat eleifend lorem.
