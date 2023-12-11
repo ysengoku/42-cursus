@@ -6,12 +6,12 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/11 16:08:37 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:11:38 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h> ////////////////
+#include <stdio.h> /////////////////////////////////////////////
 
 static char	*ft_fill_linebuffer(int fd, char *tmp);
 static char	*ft_set_line(char *tmp);
@@ -23,8 +23,7 @@ char *get_next_line(int fd)
 	char		*buf;
 
 	if (!fd)
-		return (NULL);
-	
+		return (NULL);	
 	tmp = ft_fill_linebuffer(fd, tmp);
 	line = ft_set_line(tmp);
 	tmp = ft_strchr(tmp, '\n');
