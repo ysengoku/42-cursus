@@ -13,58 +13,63 @@
 #include "get_next_line.h"
 #include <stdio.h> /////////////////////////////////////////////
 
-static char	*ft_fill_linebuffer(int fd, char *tmp);
+static char	*ft_store_buf(int fd, char *stash);
 static char	*ft_set_line(char *tmp);
 
 char *get_next_line(int fd)
 {
-	static char	*tmp;
+	static char	*stash;
 	char		*line;
-	char		*buf;
+//	char		*buf;
 
-	if (!fd)
-		return (NULL);	
-	tmp = ft_fill_linebuffer(fd, tmp);
-	line = ft_set_line(tmp);
-	tmp = ft_strchr(tmp, '\n');
+	if (fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
+		return (NULL);
+// ------ read & store in line --------------------------------------
+	line = ft_store_buf(fd, stash);
+// ------ extract the part before \n & store the rest in stash ----------
+	stash = ft_set_line(line);
 	return(line);
 }
 
-static char	*ft_fill_linebuffer(int fd, char *tmp)
+static char	*ft_store_buf(int fd, char *stash)
 {
-	char	buf[BUFSIZE];
-	
-	if (read(fd, buf, BUFSIZE) > 0)
-	 {	
-		while (ft_strchr(buf, '\n') == NULL)
-		{
-				tmp = ft_strjoin(tmp, buf);
-				read(fd, buf, BUFSIZE);
-		}
-		tmp = ft_strjoin(tmp, buf); 
+	char	*buf;
+	char	*tmp;
+	int		read_size;
+
+	buf = malloc((BUFSIZE + 1) * sizeof(char));
+	if (!buf)
+		return (NULL);
+	read_size = 1;
+	while (ft_strchr(buf, '\n') == NULL && read_size > 0)
+	{
+		read_size = read(fd, buf, BUFSIZE);
+		if (read_size == 0)
+			break;
+		buf[read_size] = '\0';	
+		if (stash == NULL)
+			stash = ft_strdup("");
+		tmp = stash;
+		stash = ft_strjoin(tmp, buf);
+		free(tmp);
 	 }
-	return (tmp);
+	free(buf);
+	return (stash);
 }
 
-static char	*ft_set_line(char *tmp)
+static char	*ft_set_line(char *line)
 {
 	int		i;
-	char	*line;
+	char	*tmp;
 	
 	i = 0;
-	if (tmp)
+	if (line)
 	{
-		while(tmp[i] != '\n' && tmp[i] != '\0')
+		while(line[i] != '\n' && line[i] != '\0')
 			i++;
-		line = malloc(sizeof(char) * (i + 1));
-		i = 0;
-		while(tmp[i] != '\n' && tmp[i] != '\0')
-		{
-			line[i] = tmp[i];
-			i++;
-		}
-		line[i] = '\0';
-		return (line);
+		tmp = ft_substr(line, i + 1, ft_strlen(line - i));
+		line[i] = '\0';	
+		return (tmp);
 	}
 	return (NULL);
 }

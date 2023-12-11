@@ -16,7 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define BUFSIZE 1
+# ifndef BUFSIZE
+#  define BUFSIZE 8
+# endif
 
 /*
 typedef struct s_list
