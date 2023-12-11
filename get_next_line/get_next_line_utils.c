@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:25 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/01 08:37:44 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:20:52 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (s)
+	unsigned int	i;
+
+	i = 0;
+	if (s)
 	{
-		if (s == (char)c)
-			return (s);
-		s++;
+		while (s[i])
+			{
+				if (s[i] == (char)c)
+					return ((char *)&s[i]);
+				i++;
+			}
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 	}
-	if (s == (char)c)
-		return (s);
 	return (NULL);
 }
 
@@ -30,8 +36,11 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	if (s)
+	{
+		while (s[i])
 		i++;
+	}
 	return (i);
 }
 
@@ -48,8 +57,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s1[i])
+	if (s1)
+	{
+		while (s1[i])
 		res[j++] = s1[i++];
+	}
 	i = 0;
 	while (s2[i])
 		res[j++] = s2[i++];
@@ -70,7 +82,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (start + len > s_len)
 		len = s_len - start;
-	substring = ft_calloc(len + 1, sizeof(char));
+	substring = malloc((len + 1) * sizeof(char));
 	if (!substring)
 		return (NULL);
 	i = 0;
@@ -80,4 +92,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	return (substring);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*copy;
+	int		i;
+
+	copy = (char *)malloc(sizeof(char) * ft_strlen((char *)s) + 1);
+	if (copy == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		copy[i] = s[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }
