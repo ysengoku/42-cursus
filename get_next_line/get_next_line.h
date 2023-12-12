@@ -20,16 +20,7 @@
 #  define BUFSIZE 6
 # endif
 
-/*
-typedef struct s_list
-{
-	char			*content;
-	struct s_list	*next;
-}					t_list;
-*/
-
 char	*get_next_line(int fd);
-
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);

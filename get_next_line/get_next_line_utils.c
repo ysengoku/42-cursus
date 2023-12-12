@@ -12,6 +12,19 @@
 
 #include "get_next_line.h"
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+			i++;
+	}
+	return (i);
+}
+
 char	*ft_strchr(const char *s, int c)
 {
 	unsigned int	i;
@@ -29,19 +42,6 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)&s[i]);
 	}
 	return (NULL);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (s)
-	{
-		while (s[i])
-			i++;
-	}
-	return (i);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -64,6 +64,24 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		res[j++] = s2[i++];
 	res[j] = '\0';
 	return (res);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*copy;
+	int		i;
+
+	copy = (char *)malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
+	if (copy == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		copy[i] = s[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -90,22 +108,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	substring[i] = '\0';
 	return (substring);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*copy;
-	int		i;
-
-	copy = (char *)malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
-	if (copy == NULL)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		copy[i] = s[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
 }
