@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/12 16:22:04 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:32:47 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static char	*ft_store_buf(int fd, char *stash)
 	while (!ft_strchr(buf, '\n') && read_size > 0)
 	{
 		read_size = read(fd, buf, BUFSIZE);
+		buf[read_size] = '\0';
 		if (read_size == 0)
 			break ;
-		buf[read_size] = '\0';
 		if (stash == NULL)
 			stash = ft_strdup("");
 		tmp = stash;
