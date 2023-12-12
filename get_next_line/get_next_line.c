@@ -14,7 +14,7 @@
 
 static void	ft_initialize_buf(char *buf);
 static char	*ft_store_buf(int fd, char *stash);
-static char	*ft_put_line(char *line);
+static char	*ft_truncate_line(char *line);
 
 char	*get_next_line(int fd)
 {
@@ -22,9 +22,17 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
+	{
+		free(stash);
 		return (NULL);
+	}
 	line = ft_store_buf(fd, stash);
-	stash = ft_put_line(line);
+	if (!line)
+	{
+		free(stash);
+		return (NULL);
+	}
+	stash = ft_truncate_line(line);
 	return (line);
 }
 
@@ -64,21 +72,27 @@ static char	*ft_store_buf(int fd, char *stash)
 	return (stash);
 }
 
-static char	*ft_put_line(char *line)
+static char	*ft_truncate_line(char *line_buf)
 {
 	int		i;
 	char	*tmp;
 
 	i = 0;
-	if (line)
+	if (line_buf)
 	{
-		while (line[i] != '\n' && line[i] != '\0')
+		while (line_buf[i] != '\n' && line_buf[i] != '\0')
 			i++;
-		tmp = ft_substr(line, i + 1, ft_strlen(line) - i);
-		while (line[i++] != '\0')
-			line[i] = '\0';
+		if (line_buf[i] == '\0' || line_buf[i + 1] == '\0')
+			return (NULL);
+		tmp = ft_substr(line_buf, i + 1, ft_strlen(line_buf) - i);
+		if (!tmp)
+			{
+				free(line_buf);
+				return (NULL);
+			}
+		line_buf[i + 1] = '\0';
 		return (tmp);
 	}
-	free(line);
+	free(line_buf);
 	return (NULL);
 }
