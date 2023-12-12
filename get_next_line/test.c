@@ -8,31 +8,13 @@ int	main()
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-
-	line = get_next_line(fd);	
-	printf("1. %s\n", line);
-
-	line = get_next_line(fd);	
-	printf("2. %s\n", line);
-
-	line = get_next_line(fd);	
-	printf("3. %s\n", line);
-
-	line = get_next_line(fd);	
-	printf("4. %s\n", line);
-
-	line = get_next_line(fd);	
-	printf("5. %s\n", line);
-
-	line = get_next_line(fd);	
-	printf("6. %s\n", line);
-
-	line = get_next_line(fd);	
-	printf("7. %s\n", line);
-
-	line = get_next_line(fd);	
-	printf("8. %s\n", line);
-
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;	
+		printf("%s", line);
+	}
 	free(line);
 	close(fd);
 	return(0);
@@ -42,8 +24,3 @@ int	main()
 // returns File Descriptor (small nonnegative int) or -1 (error).
 
 
-/*
-	char buf[BUFSIZE];
-	read(fd, buf, BUFSIZE);
-	printf("%s\n", buf);
-*/
