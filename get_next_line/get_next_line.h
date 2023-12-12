@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:33 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/11 15:41:46 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:05:05 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 
 # ifndef BUFSIZE
-#  define BUFSIZE 8
+#  define BUFSIZE 6
 # endif
 
 /*

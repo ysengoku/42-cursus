@@ -6,30 +6,36 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/11 16:11:38 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:49:04 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h> /////////////////////////////////////////////
 
+static void	ft_initialize_buf(char *buf);
 static char	*ft_store_buf(int fd, char *stash);
-static char	*ft_set_line(char *tmp);
+static char	*ft_set_line(char *line);
 
 char *get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
-//	char		*buf;
 
 	if (fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
-// ------ read & store in line --------------------------------------
 	line = ft_store_buf(fd, stash);
-// ------ extract the part before \n & store the rest in stash ----------
 	stash = ft_set_line(line);
-	printf("%s\n", stash); //////// There is an issue with stash...
 	return(line);
+}
+
+static void	ft_initialize_buf(char *buf)
+{
+	unsigned long	i;
+
+	i = 0;
+	while(i < (BUFSIZE + 1) * sizeof(char))
+		buf[i++] = '\0';
 }
 
 static char	*ft_store_buf(int fd, char *stash)
@@ -39,21 +45,23 @@ static char	*ft_store_buf(int fd, char *stash)
 	int		read_size;
 
 	buf = malloc((BUFSIZE + 1) * sizeof(char));
+	ft_initialize_buf(buf);
 	if (!buf)
 		return (NULL);
 	read_size = 1;
-	while (ft_strchr(buf, '\n') == NULL && read_size > 0)
+	while (!ft_strchr(buf, '\n') && read_size > 0)
 	{
 		read_size = read(fd, buf, BUFSIZE);
+//		printf("READ SIZE = %d\n", read_size); //////////////////////////////
 		if (read_size == 0)
 			break;
-		buf[read_size] = '\0';	
+		buf[read_size] = '\0';
 		if (stash == NULL)
 			stash = ft_strdup("");
 		tmp = stash;
 		stash = ft_strjoin(tmp, buf);
 		free(tmp);
-	 }
+	}
 	free(buf);
 	return (stash);
 }
@@ -64,15 +72,16 @@ static char	*ft_set_line(char *line)
 	char	*tmp;
 	
 	i = 0;
+	tmp = NULL;
 	if (line)
 	{
 		while(line[i] != '\n' && line[i] != '\0')
 			i++;
-		tmp = ft_substr(line, i + 1, ft_strlen(line - i));
-		line[i] = '\0';	
+		tmp = ft_substr(line, i + 1, ft_strlen(line) - i);
+		while (line[i++] != '\0')
+			line[i] = '\0';
 		return (tmp);
 	}
 	return (NULL);
 }
-
 

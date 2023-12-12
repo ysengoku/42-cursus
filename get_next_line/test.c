@@ -8,13 +8,19 @@ int	main()
 	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-//	while (1)
-//	{
-	line = get_next_line(fd);
-//	if (line == NULL)
-//		break ;
-//	}
-	printf("%s\n", line);
+
+	line = get_next_line(fd);	
+	printf("1. %s\n", line);
+
+	line = get_next_line(fd);	
+	printf("2. %s\n", line);
+
+	line = get_next_line(fd);	
+	printf("3. %s\n", line);
+
+	line = get_next_line(fd);	
+	printf("4. %s\n", line);
+
 	free(line);
 	close(fd);
 	return(0);

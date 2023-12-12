@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:25 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/11 15:20:52 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:45:34 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		substring[i] = s[start + i];
 		i++;
 	}
+	substring[i] = '\0';
 	return (substring);
 }
 
@@ -96,7 +97,7 @@ char	*ft_strdup(const char *s)
 	char	*copy;
 	int		i;
 
-	copy = (char *)malloc(sizeof(char) * ft_strlen((char *)s) + 1);
+	copy = (char *)malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
 	if (copy == NULL)
 		return (NULL);
 	i = 0;
