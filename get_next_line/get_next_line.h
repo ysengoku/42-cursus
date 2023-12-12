@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef BUFSIZE
-#  define BUFSIZE 6
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 6
 # endif
 
 char	*get_next_line(int fd);

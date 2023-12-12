@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
-	if (fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 	{
 		free(stash);
 		return (NULL);
@@ -41,7 +41,7 @@ static void	ft_initialize_buf(char *buf)
 	unsigned long	i;
 
 	i = 0;
-	while (i < (BUFSIZE + 1) * sizeof(char))
+	while (i < (BUFFER_SIZE + 1) * sizeof(char))
 		buf[i++] = '\0';
 }
 
@@ -51,14 +51,14 @@ static char	*ft_store_buf(int fd, char *stash)
 	char	*tmp;
 	int		read_size;
 
-	buf = malloc((BUFSIZE + 1) * sizeof(char));
+	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 		return (NULL);
 	ft_initialize_buf(buf);
 	read_size = 1;
 	while (!ft_strchr(buf, '\n') && read_size > 0)
 	{
-		read_size = read(fd, buf, BUFSIZE);
+		read_size = read(fd, buf, BUFFER_SIZE);
 		buf[read_size] = '\0';
 		if (read_size == 0)
 			break ;
