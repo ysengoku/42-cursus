@@ -6,12 +6,11 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/12 12:49:04 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:20:09 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h> /////////////////////////////////////////////
 
 static void	ft_initialize_buf(char *buf);
 static char	*ft_store_buf(int fd, char *stash);
@@ -22,8 +21,12 @@ char *get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
-	if (fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
+	line = ft_strdup("");
+	if (!line || fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
+	{
+		free(line);
 		return (NULL);
+	}
 	line = ft_store_buf(fd, stash);
 	stash = ft_set_line(line);
 	return(line);
@@ -45,14 +48,13 @@ static char	*ft_store_buf(int fd, char *stash)
 	int		read_size;
 
 	buf = malloc((BUFSIZE + 1) * sizeof(char));
-	ft_initialize_buf(buf);
 	if (!buf)
 		return (NULL);
+	ft_initialize_buf(buf);
 	read_size = 1;
-	while (!ft_strchr(buf, '\n') && read_size > 0)
+	while (!ft_strchr(buf, '\n') && read_size > 0)	
 	{
 		read_size = read(fd, buf, BUFSIZE);
-//		printf("READ SIZE = %d\n", read_size); //////////////////////////////
 		if (read_size == 0)
 			break;
 		buf[read_size] = '\0';
