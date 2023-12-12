@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/12 14:20:09 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:22:04 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 static void	ft_initialize_buf(char *buf);
 static char	*ft_store_buf(int fd, char *stash);
-static char	*ft_set_line(char *line);
+static char	*ft_put_line(char *line);
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
 
-	line = ft_strdup("");
-	if (!line || fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
-	{
-		free(line);
+	if (fd < 0 || BUFSIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
-	}
 	line = ft_store_buf(fd, stash);
-	stash = ft_set_line(line);
-	return(line);
+	stash = ft_put_line(line);
+	return (line);
 }
 
 static void	ft_initialize_buf(char *buf)
@@ -37,7 +33,7 @@ static void	ft_initialize_buf(char *buf)
 	unsigned long	i;
 
 	i = 0;
-	while(i < (BUFSIZE + 1) * sizeof(char))
+	while (i < (BUFSIZE + 1) * sizeof(char))
 		buf[i++] = '\0';
 }
 
@@ -52,11 +48,11 @@ static char	*ft_store_buf(int fd, char *stash)
 		return (NULL);
 	ft_initialize_buf(buf);
 	read_size = 1;
-	while (!ft_strchr(buf, '\n') && read_size > 0)	
+	while (!ft_strchr(buf, '\n') && read_size > 0)
 	{
 		read_size = read(fd, buf, BUFSIZE);
 		if (read_size == 0)
-			break;
+			break ;
 		buf[read_size] = '\0';
 		if (stash == NULL)
 			stash = ft_strdup("");
@@ -68,22 +64,21 @@ static char	*ft_store_buf(int fd, char *stash)
 	return (stash);
 }
 
-static char	*ft_set_line(char *line)
+static char	*ft_put_line(char *line)
 {
 	int		i;
 	char	*tmp;
-	
+
 	i = 0;
-	tmp = NULL;
 	if (line)
 	{
-		while(line[i] != '\n' && line[i] != '\0')
+		while (line[i] != '\n' && line[i] != '\0')
 			i++;
 		tmp = ft_substr(line, i + 1, ft_strlen(line) - i);
 		while (line[i++] != '\0')
 			line[i] = '\0';
 		return (tmp);
 	}
+	free(line);
 	return (NULL);
 }
-
