@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:33 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/12 11:05:05 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:27:20 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_list
 }					t_list;
 */
 
-char 	*get_next_line(int fd);
+char	*get_next_line(int fd);
 
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);

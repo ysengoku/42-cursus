@@ -21,6 +21,18 @@ int	main()
 	line = get_next_line(fd);	
 	printf("4. %s\n", line);
 
+	line = get_next_line(fd);	
+	printf("5. %s\n", line);
+
+	line = get_next_line(fd);	
+	printf("6. %s\n", line);
+
+	line = get_next_line(fd);	
+	printf("7. %s\n", line);
+
+	line = get_next_line(fd);	
+	printf("8. %s\n", line);
+
 	free(line);
 	close(fd);
 	return(0);
