@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/13 13:05:38 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:29:37 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*get_next_line(int fd)
 	line = ft_store_buf(fd, stash);
 	if (!line)
 	{
+		free(line);
 		free(stash);
 		stash = NULL;
 		return (NULL);
