@@ -8,7 +8,7 @@ int	main()
 	char	*line;
 
 	fd = open("test_multilines.txt", O_RDONLY);
-		while (1)
+	while (1)
  	{
  		line = get_next_line(fd);
  		printf("%s", line);
