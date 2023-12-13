@@ -7,14 +7,23 @@ int	main()
 	int		fd;
 	char	*line;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("1char.txt", O_RDONLY);
 	while (1)
 	{
 		line = get_next_line(fd);
+		printf("%s\n", line);
 		if (!line)
 			break ;	
-		printf("%s", line);
+//		printf("%s", line);
 	}
+/*
+line = get_next_line(fd);
+printf("%s\n", line);
+line = get_next_line(fd);
+printf("%s\n", line);
+line = get_next_line(fd);
+printf("%s\n", line);
+*/
 	free(line);
 	close(fd);
 	return(0);
