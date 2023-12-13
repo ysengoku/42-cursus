@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:25 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/12 14:30:10 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:49:16 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	unsigned int	j;
 
 	res_len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	res = (char *)malloc(res_len * sizeof(char) + 1);
+	res = (char *)malloc((res_len + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
 	i = 0;
