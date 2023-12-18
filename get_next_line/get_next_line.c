@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/18 14:49:02 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:45:07 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ static char	*ft_store_buf(int fd, char *stash)
 		if (read_size == 0)
 			break ;
 		stash = ft_append_buf(stash, buf);
+		if (!stash) ////////////////////////////////
+			break ; //////////////////////////////////
 	}
 	return (free(buf), stash);
 }
@@ -61,6 +63,7 @@ static char	*ft_initialize_buf(size_t buf_size, size_t size)
 	size_t	i;
 
 	buf = malloc((buf_size + 1) * size);
+//	buf = 0;
 	if (!buf)
 		return (NULL);
 	i = 0;
@@ -75,12 +78,14 @@ static char	*ft_append_buf(char *stash, char *buf)
 
 	if (!stash)
 	{
-		stash = ft_strdup("");
+		stash = ft_strdup(""); // malloc fail chk - OK
+//		stash = 0;
 		if (!stash)
 			return (NULL);
 	}
 	tmp = stash;
 	stash = ft_strjoin(tmp, buf);
+//	stash = 0;
 	free(tmp);
 	if (!stash)
 		return (NULL);
@@ -89,7 +94,7 @@ static char	*ft_append_buf(char *stash, char *buf)
 
 static char	*ft_truncate_line(char *line)
 {
-	int		i;
+	ssize_t	i;
 	char	*tmp;
 
 	i = 0;
@@ -97,10 +102,10 @@ static char	*ft_truncate_line(char *line)
 		i++;
 	if (line[i] == '\0' || line[i + 1] == '\0')
 		return (NULL);
-	tmp = ft_substr(line, i + 1, ft_strlen(line) - i);
+	tmp = ft_substr(line, i + 1, ft_strlen(line) - i); ///// malloc fail chk - OK
 	if (!tmp)
 	{
-		free(line);
+		line = NULL;
 		return (NULL);
 	}
 	line[i + 1] = '\0';

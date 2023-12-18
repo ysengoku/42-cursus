@@ -22,10 +22,10 @@ int	main()
 //		printf("\n-------------------------------------------------\n");
 	 	free(line);
  	}
-		printf("\n---------------------null case----------------------------\n");
-	 	line = get_next_line(fd);
- 		printf("%s", line);
-	 	free(line);
+		// printf("\n---------------------null case----------------------------\n");
+	 	// line = get_next_line(fd);
+ 		// printf("%s", line);
+	 	// free(line);
 	close(fd);
 	return(0);
 }
