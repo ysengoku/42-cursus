@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/18 16:45:07 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/19 15:24:42 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ char	*get_next_line(int fd)
 		stash = NULL;
 		return (NULL);
 	}
-	line = ft_store_buf(fd, stash);
+	line = ft_store_buf(fd, stash); // malloc fail chk - OK
 	if (!line)
 		return (NULL);
-	stash = ft_truncate_line(line);
+	stash = ft_truncate_line(line); // malloc fail chk - OK
 	return (line);
 }
 
@@ -41,7 +41,7 @@ static char	*ft_store_buf(int fd, char *stash)
 	ssize_t	read_size;
 
 	read_size = 1;
-	buf = ft_initialize_buf(BUFFER_SIZE, sizeof(char));
+	buf = ft_initialize_buf(BUFFER_SIZE, sizeof(char)); // malloc fail chk -ok
 	if (!buf)
 		return (NULL);
 	while (!ft_strchr(buf, '\n') && read_size > 0)
@@ -62,8 +62,7 @@ static char	*ft_initialize_buf(size_t buf_size, size_t size)
 	char	*buf;
 	size_t	i;
 
-	buf = malloc((buf_size + 1) * size);
-//	buf = 0;
+	buf = malloc((buf_size + 1) * size);  // malloc fail chk - OK
 	if (!buf)
 		return (NULL);
 	i = 0;
@@ -79,13 +78,11 @@ static char	*ft_append_buf(char *stash, char *buf)
 	if (!stash)
 	{
 		stash = ft_strdup(""); // malloc fail chk - OK
-//		stash = 0;
 		if (!stash)
 			return (NULL);
 	}
 	tmp = stash;
-	stash = ft_strjoin(tmp, buf);
-//	stash = 0;
+	stash = ft_strjoin(tmp, buf);  // malloc fail chk - OK
 	free(tmp);
 	if (!stash)
 		return (NULL);
@@ -102,7 +99,7 @@ static char	*ft_truncate_line(char *line)
 		i++;
 	if (line[i] == '\0' || line[i + 1] == '\0')
 		return (NULL);
-	tmp = ft_substr(line, i + 1, ft_strlen(line) - i); ///// malloc fail chk - OK
+	tmp = ft_substr(line, i + 1, ft_strlen(line) - i); // malloc fail chk - OK
 	if (!tmp)
 	{
 		line = NULL;
