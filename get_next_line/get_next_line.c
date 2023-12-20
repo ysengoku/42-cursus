@@ -6,14 +6,13 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/19 15:24:42 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:56:21 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 static char	*ft_store_buf(int fd, char *stash);
-static char	*ft_initialize_buf(size_t buf_size, size_t size);
 static char	*ft_append_buf(char *stash, char *buf);
 static char	*ft_truncate_line(char *line);
 
@@ -28,10 +27,10 @@ char	*get_next_line(int fd)
 		stash = NULL;
 		return (NULL);
 	}
-	line = ft_store_buf(fd, stash); // malloc fail chk - OK
+	line = ft_store_buf(fd, stash);
 	if (!line)
 		return (NULL);
-	stash = ft_truncate_line(line); // malloc fail chk - OK
+	stash = ft_truncate_line(line);
 	return (line);
 }
 
@@ -41,34 +40,24 @@ static char	*ft_store_buf(int fd, char *stash)
 	ssize_t	read_size;
 
 	read_size = 1;
-	buf = ft_initialize_buf(BUFFER_SIZE, sizeof(char)); // malloc fail chk -ok
+	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 		return (NULL);
-	while (!ft_strchr(buf, '\n') && read_size > 0)
+	while (read_size > 0)
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
 		buf[read_size] = '\0';
-		if (read_size == 0)
+		if (read_size == 0 || read_size == -1)
 			break ;
 		stash = ft_append_buf(stash, buf);
-		if (!stash) ////////////////////////////////
-			break ; //////////////////////////////////
+		if (!stash)
+			break ;
+		if (ft_strchr(buf, '\n'))
+			break ;
 	}
-	return (free(buf), stash);
-}
-
-static char	*ft_initialize_buf(size_t buf_size, size_t size)
-{
-	char	*buf;
-	size_t	i;
-
-	buf = malloc((buf_size + 1) * size);  // malloc fail chk - OK
-	if (!buf)
-		return (NULL);
-	i = 0;
-	while (i < (buf_size + 1) * size)
-		buf[i++] = '\0';
-	return (buf);
+	free(buf);
+	buf = NULL;
+	return (stash);	
 }
 
 static char	*ft_append_buf(char *stash, char *buf)
@@ -77,13 +66,14 @@ static char	*ft_append_buf(char *stash, char *buf)
 
 	if (!stash)
 	{
-		stash = ft_strdup(""); // malloc fail chk - OK
+		stash = ft_strdup("");
 		if (!stash)
 			return (NULL);
 	}
 	tmp = stash;
-	stash = ft_strjoin(tmp, buf);  // malloc fail chk - OK
+	stash = ft_strjoin(tmp, buf);
 	free(tmp);
+	tmp = NULL;
 	if (!stash)
 		return (NULL);
 	return (stash);
@@ -99,7 +89,7 @@ static char	*ft_truncate_line(char *line)
 		i++;
 	if (line[i] == '\0' || line[i + 1] == '\0')
 		return (NULL);
-	tmp = ft_substr(line, i + 1, ft_strlen(line) - i); // malloc fail chk - OK
+	tmp = ft_substr(line, i + 1, ft_strlen(line) - i);
 	if (!tmp)
 	{
 		line = NULL;
