@@ -6,7 +6,7 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2023/12/20 12:56:21 by yusengok         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:17:19 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	static char	*stash = NULL;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, &line, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 	{
 		free(stash);
 		stash = NULL;
@@ -87,6 +87,8 @@ static char	*ft_truncate_line(char *line)
 	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
 		i++;
+	//--- Here, line[i] is \n or \0. 
+	//--- We check line[i] in case there is no \n, line[i+1] in case line[i] is \n.
 	if (line[i] == '\0' || line[i + 1] == '\0')
 		return (NULL);
 	tmp = ft_substr(line, i + 1, ft_strlen(line) - i);
