@@ -1,5 +1,5 @@
 // cc -Wall -Wextra -Werror  -I/includes test.c includes/ft_printf.h srcs/*.c
-// gcc test.c -L. -lftprintf -o (filename)  
+// cc test.c -L. -lftprintf -o (filename)  
 #include "includes/ft_printf.h"
 #include <stdio.h>
 
@@ -7,9 +7,9 @@ static void	*ft_memset(void *s, int c, size_t n);
 
 int	main()
 {
-	setvbuf(stdout, NULL, _IONBF, 0);
-	printf("PRINTF : %i\n", printf("abcde%"));
-	printf("YOURS : %i\n", ft_printf("abcde%"));
+	// setvbuf(stdout, NULL, _IONBF, 0);
+	// printf("PRINTF : %i\n", printf("abcde%"));
+	// printf("YOURS : %i\n", ft_printf("abcde%"));
 
 	printf("\n------------- TEST / c -------------\n");
 	printf(" (%i)\n", ft_printf("%c", 'a'));
