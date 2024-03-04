@@ -6,90 +6,96 @@
 #    By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 13:12:10 by yusengok          #+#    #+#              #
-#    Updated: 2023/11/30 09:32:45 by yusengok         ###   ########.fr        #
+#    Updated: 2024/02/28 12:07:32 by yusengok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
-SRCS = 	ft_atoi.c \
-		ft_bzero.c \
-		ft_calloc.c \
-		ft_isalnum.c \
-		ft_isalpha.c \
-		ft_isascii.c \
-		ft_isdigit.c \
-		ft_isprint.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_memset.c \
-		ft_strchr.c \
-		ft_strdup.c \
-		ft_strlcat.c \
-		ft_strlcpy.c \
-		ft_strlen.c \
-		ft_strncmp.c \
-		ft_strnstr.c \
-		ft_strrchr.c \
-		ft_tolower.c \
-		ft_toupper.c \
-		ft_substr.c \
-		ft_strjoin.c \
-		ft_strtrim.c \
-		ft_split.c \
-		ft_itoa.c \
-		ft_strmapi.c \
-		ft_striteri.c \
-		ft_putchar_fd.c \
-		ft_putstr_fd.c \
-		ft_putendl_fd.c \
-		ft_putnbr_fd.c
-
-SRCS_BONUS =	ft_lstnew.c			\
-				ft_lstadd_front.c	\
-				ft_lstsize.c		\
-				ft_lstlast.c		\
-				ft_lstadd_back.c	\
-				ft_lstdelone.c		\
-				ft_lstclear.c		\
-				ft_lstiter.c		\
-				ft_lstmap.c
-
-OBJS = $(SRCS:.c=.o)
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
+HEADER = libft.h
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-HEAD = libft.h
+CFLAGS = -Wall -Wextra -Werror -I .
 AR = ar rcs
 RM	= rm -f
 
-all: $(NAME)
+FILES = ft_abs	\
+		ft_atoi	\
+		ft_atol	\
+		ft_bzero	\
+		ft_calloc	\
+		ft_isalnum	\
+		ft_isalpha	\
+		ft_isascii	\
+		ft_isdigit	\
+		ft_isprint	\
+		ft_memchr	\
+		ft_memcmp	\
+		ft_memcpy	\
+		ft_memmove	\
+		ft_memset	\
+		ft_strchr	\
+		ft_strdup	\
+		ft_strlcat	\
+		ft_strlcpy	\
+		ft_strlen	\
+		ft_strncmp	\
+		ft_strnstr	\
+		ft_strnstr_r	\
+		ft_strrchr	\
+		ft_tolower	\
+		ft_toupper	\
+		ft_substr	\
+		ft_strjoin	\
+		ft_strtrim	\
+		ft_split	\
+		ft_itoa	\
+		ft_strmapi	\
+		ft_striteri	\
+		ft_putchar_fd	\
+		ft_putstr_fd	\
+		ft_putendl_fd	\
+		ft_putnbr_fd	\
+		ft_lstnew	\
+		ft_lstadd_front	\
+		ft_lstsize	\
+		ft_lstlast	\
+		ft_lstadd_back	\
+		ft_lstdelone	\
+		ft_lstclear	\
+		ft_lstiter	\
+		ft_lstmap	\
+		ft_strcpy	\
+		ft_strcat	\
+		ft_strcmp	\
+		ft_strstr	\
+		ft_printf	\
+		ft_printf_char	\
+		ft_printf_str	\
+		ft_printf_ptr	\
+		ft_printf_nbr	\
+		ft_printf_uint	\
+		ft_printf_hex	\
+		get_next_line	\
+
+SRCS = $(addsuffix .c, $(FILES))
+OBJS_DIR = .objs/
+OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
+
+all: 
+	@$(MAKE) $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
 
-bonus: all $(OBJS_BONUS)
-	$(AR) $(NAME) $(OBJS_BONUS)
-
-%.o: %.c $(HEAD) Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJS_DIR)%.o: %.c $(HEADER)
+	@mkdir -p $(OBJS_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	@$(RM) -r $(OBJS_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean $(NAME)
 
-.PHONY: all bonus clean fclean re
-
-# 変数を呼び出すときは$()で囲む
-# -c === compile option to compile the source file & create the object file
-# $< === name of the source file
-# -o === define the name of the output file
-# $@ === ターゲットファイル名
-# %.o %.c === %を使うことで、SRCSで指定された.cファイルを.oファイルにそれぞれ置換している
+.PHONY: all clean fclean re
