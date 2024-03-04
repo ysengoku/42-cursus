@@ -1,0 +1,5 @@
+apple 6
+banana 5
+orange 7
+peach 25
+chocolate 100
