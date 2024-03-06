@@ -6,95 +6,73 @@
 /*   By: yusengok <yusengok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:28 by yusengok          #+#    #+#             */
-/*   Updated: 2024/02/26 14:01:01 by yusengok         ###   ########.fr       */
+/*   Updated: 2024/03/06 08:38:50 by yusengok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-static char	*ft_store_buf(int fd, char *stash);
+static char	*ft_read_line(int fd, char *buf);
 static char	*ft_append_buf(char *stash, char *buf);
-static char	*ft_truncate_line(char *line);
 
 char	*get_next_line(int fd)
 {
-	static char	*stash = NULL;
+	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
+	char		*newline;
+	int			line_len;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
-	{
-		free(stash);
-		stash = NULL;
 		return (NULL);
-	}
-	line = ft_store_buf(fd, stash);
+	line = ft_read_line(fd, buf);
 	if (!line)
 		return (NULL);
-	stash = ft_truncate_line(line);
+	newline = ft_strchr(line, '\n');
+	if (newline != NULL)
+	{
+		line_len = newline - line + 1;
+		ft_strlcpy(buf, newline + 1, BUFFER_SIZE + 1);
+	}
+	else
+	{
+		line_len = ft_strlen(line);
+		ft_strlcpy(buf, "", BUFFER_SIZE + 1);
+	}
+	line[line_len] = '\0';
 	return (line);
 }
 
-static char	*ft_store_buf(int fd, char *stash)
+static char	*ft_read_line(int fd, char *buf)
 {
-	char	*buf;
 	ssize_t	read_size;
+	char	*line;
 
-	read_size = 1;
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buf)
+	line = ft_strdup(buf);
+	if (!line)
 		return (NULL);
-	while (read_size > 0)
+	read_size = 1;
+	while (read_size > 0 && !ft_strchr(buf, '\n'))
 	{
 		read_size = read(fd, buf, BUFFER_SIZE);
 		buf[read_size] = '\0';
 		if (read_size == 0 || read_size == -1)
-			break ;
-		stash = ft_append_buf(stash, buf);
-		if (!stash)
-			break ;
-		if (ft_strchr(buf, '\n'))
+			return (free(line), NULL);
+		line = ft_append_buf(line, buf);
+		if (!line)
 			break ;
 	}
-	free(buf);
-	buf = NULL;
-	return (stash);
+	return (line);
 }
 
-static char	*ft_append_buf(char *stash, char *buf)
+static char	*ft_append_buf(char *line, char *buf)
 {
 	char	*tmp;
 
-	if (!stash)
-	{
-		stash = ft_strdup("");
-		if (!stash)
-			return (NULL);
-	}
-	tmp = stash;
-	stash = ft_strjoin(tmp, buf);
+	tmp = line;
+	line = ft_strjoin(tmp, buf);
 	free(tmp);
 	tmp = NULL;
-	if (!stash)
+	if (!line)
 		return (NULL);
-	return (stash);
-}
-
-static char	*ft_truncate_line(char *line)
-{
-	ssize_t	i;
-	char	*tmp;
-
-	i = 0;
-	while (line[i] != '\n' && line[i] != '\0')
-		i++;
-	if (line[i] == '\0' || line[i + 1] == '\0')
-		return (NULL);
-	tmp = ft_substr(line, i + 1, ft_strlen(line) - i);
-	if (!tmp)
-	{
-		line = NULL;
-		return (NULL);
-	}
-	line[i + 1] = '\0';
-	return (tmp);
+	return (line);
 }
