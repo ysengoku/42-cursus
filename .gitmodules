@@ -1,0 +1,3 @@
+[submodule "03-Minishell"]
+	path = 03-Minishell
+	url = https://github.com/ysengoku/42-Minishell.git
