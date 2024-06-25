@@ -4,3 +4,6 @@
 [submodule "03-philosophers"]
 	path = 03-philosophers
 	url = https://github.com/ysengoku/42-philosophers.git
+[submodule "04-cub3d"]
+	path = 04-cub3d
+	url = https://github.com/ysengoku/42-cub3d.git
