@@ -7,3 +7,6 @@
 [submodule "04-cub3d"]
 	path = 04-cub3d
 	url = https://github.com/ysengoku/42-cub3d.git
+[submodule "04-cub3d_macOS"]
+	path = 04-cub3d_macOS
+	url = https://github.com/ysengoku/42-cub3d-macOS.git
