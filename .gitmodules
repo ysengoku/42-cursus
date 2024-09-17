@@ -10,3 +10,6 @@
 [submodule "04-cub3d_macOS"]
 	path = 04-cub3d_macOS
 	url = https://github.com/ysengoku/42-cub3d-macOS.git
+[submodule "05-cpp_modules"]
+	path = 05-cpp_modules
+	url = https://github.com/ysengoku/42-cpp.git
