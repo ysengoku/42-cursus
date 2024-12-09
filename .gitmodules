@@ -18,4 +18,4 @@
 	url = https://github.com/ysengoku/42-Inception
 [submodule "05-ft_irc"]
 	path = 05-ft_irc
-	url = https://github.com/ysengoku/42-ft_irc
+	url = https://github.com/faboussard/42-irc
